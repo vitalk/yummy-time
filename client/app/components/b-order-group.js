@@ -27,6 +27,20 @@ export default Ember.Component.extend({
     return this.get('portions').isEvery('paid', true);
   }),
 
+  moneyAvailable: Ember.computed('portions.@each.paid', function() {
+    // eslint-disable-next-line arrow-body-style
+    return this.get('portions').reduce((sum, portion) => {
+      return sum + (portion.get('paid') ? portion.get('cost') : 0);
+    }, 0);
+  }),
+
+  moneyTotal: Ember.computed('portions.[]', function() {
+    // eslint-disable-next-line arrow-body-style
+    return this.get('portions').reduce((sum, portion) => {
+      return sum + portion.get('cost');
+    }, 0);
+  }),
+
   click: (e) => {
     const target = $(e.target);
 
