@@ -10,6 +10,12 @@
       <span class="b-person__name">{{owner.displayName}}</span>
       <span class="b-person__phone">{{owner.phone}}</span>
     </div>
+
+    <div class="b-order-group__money b-order-money">
+      <span class="b-order-money__available">{{moneyAvailable}}</span>
+      <span class="b-order-money__total">{{moneyTotal}}</span>
+    </div>
+
     {{b-checkbox class="b-order-group__checkbox"
                  checked=allPaid disabled=isManager
                  onchange=(action 'toggleAll') }}
