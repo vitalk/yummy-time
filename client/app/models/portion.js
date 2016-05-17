@@ -7,6 +7,7 @@ export default DS.Model.extend({
   deleted: DS.attr('boolean'),
   owner: DS.belongsTo('account'),
   order: DS.belongsTo('order'),
+  product: DS.belongsTo('product'),
 
   updateOrderMoney(order) {
     const cost = this.get('cost');
