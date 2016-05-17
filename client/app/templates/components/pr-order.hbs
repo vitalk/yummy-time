@@ -16,13 +16,13 @@
       </div>
     </div>
     <div class="pr-order__money b-order-money">
-      <span class="b-order-money__available">{{order.money.available}}</span>
+      <span class="b-order-money__available">{{format-currency order.money.available}}</span>
       {{#if order.isReady}}
-        <span class="b-order-money__total">{{order.money.total}}</span>
+        <span class="b-order-money__total">{{format-currency order.money.total}}</span>
       {{else}}
         <span class="b-order-money__total _not-enough"
-              title="Минимальная сумма заказа {{order.money.required}}">
-          {{order.money.total}}
+              title="Минимальная сумма заказа {{format-currency order.money.required sep=' '}}">
+          {{format-currency order.money.total}}
         </span>
       {{/if}}
     </div>

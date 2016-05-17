@@ -3,7 +3,9 @@
     <li class="b-vendors__item">
       <div class="b-vendors__info">
         <span class="b-vendors__title">{{vendor.title}}</span>
-        <span class="b-vendors__cost">Минимальная сумма заказа {{vendor.minOrderCost}}</span>
+        <span class="b-vendors__cost">
+          Минимальная сумма заказа {{format-currency vendor.minOrderCost}}
+        </span>
       </div>
       <a href="{{vendor.url}}" target="_blank"
          class="b-vendors__link">{{vendor.url}}</a>
