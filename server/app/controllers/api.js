@@ -5,6 +5,7 @@ const models = {
   Order: require('../models/order'),
   Account: require('../models/account'),
   Vendor: require('../models/vendor'),
+  Product: require('../models/product'),
   Portion: require('../models/portion')
 };
 
@@ -13,6 +14,7 @@ const registry = new API.ResourceTypeRegistry({
   orders: require('./api/resource-descriptions/order'),
   accounts: require('./api/resource-descriptions/account'),
   portions: require('./api/resource-descriptions/portion'),
+  products: require('./api/resource-descriptions/product'),
   vendors: require('./api/resource-descriptions/vendor')
 }, { dbAdapter: adapter });
 
