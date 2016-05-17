@@ -5,11 +5,12 @@ export default Ember.Controller.extend({
   notifications: Ember.inject.service(),
 
   actions: {
-    addToOrder(order, account, attrs) {
+    addToOrder(order, account, product, attrs) {
       const isManager = (this.get('session.account.id') === order.get('manager.id'));
       const portion = this.store.createRecord('portion', attrs);
       portion.set('order', order);
       portion.set('owner', account);
+      portion.set('product', product);
 
       if (isManager) {
         portion.set('paid', true);
