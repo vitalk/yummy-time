@@ -1,7 +1,7 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('portion', 'Unit | Model | portion', {
-  needs: ['model:account', 'model:order', 'model:product']
+moduleForModel('product', 'Unit | Model | product', {
+  needs: ['model:vendor']
 });
 
 test('it exists', function(assert) {

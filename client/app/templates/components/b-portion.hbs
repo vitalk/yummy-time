@@ -6,7 +6,11 @@
     <button class="b-portion__remove-btn _disabled"></button>
   {{/if}}
   <div class="b-portion__text">
-    {{portion.text}}
+    {{#if portion.product}}
+      {{portion.product.name}}
+    {{else}}
+      {{portion.text}}
+    {{/if}}
   </div>
   <div class="b-portion__cost">{{portion.cost}}</div>
   {{b-checkbox checked=portion.paid disabled=isManager

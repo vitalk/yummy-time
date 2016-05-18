@@ -11,6 +11,7 @@ export default Ember.Component.extend({
   model: null,
   type: 'text',
   placeholder: '',
+  disabled: null,
   value: null,
   valuePath: '',
   validation: null,
