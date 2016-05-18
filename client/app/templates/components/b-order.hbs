@@ -3,7 +3,7 @@
 
   {{b-order-description order=order}}
 
-  <ul class="b-order__content">
+  <ul class="b-list b-order__content">
     {{#each groupedPortions as |group|}}
       {{b-order-group order=order portions=group.list owner=group.grouper}}
     {{/each}}
