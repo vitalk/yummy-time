@@ -2,7 +2,7 @@
   <div class="pr-vendor-option__title">{{data.title}}</div>
   {{#if data.minOrderCost}}
     <div class="pr-vendor-option__min-cost">
-      Минимальная сумма заказа {{data.minOrderCost}}
+      Минимальная сумма заказа {{format-currency data.minOrderCost}}
     </div>
   {{/if}}
 </div>

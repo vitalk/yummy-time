@@ -16,7 +16,9 @@
     {{#if vendor}}
       <div class="f-default__row">
         <a class="f-order__vendor-link" href="{{vendor.url}}">{{vendor.url}}</a>
-        <div class="f-order__vendor-min-cost">Минимальная сумма заказа {{vendor.minOrderCost}}</div>
+        <div class="f-order__vendor-min-cost">
+          Минимальная сумма заказа {{format-currency vendor.minOrderCost}}
+        </div>
       </div>
     {{/if}}
 
