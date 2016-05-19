@@ -4,21 +4,17 @@ export default Ember.Component.extend({
   session: Ember.inject.service(),
   store: Ember.inject.service(),
 
-  didValidate: false,
-  product: null,
-  productSelected: null,
-
   accountPortions: Ember.computed.filter('order.portions', function(portion) {
     return portion.get('owner.id') === this.get('session.account.id');
   }),
 
   actions: {
-    addToOrder(order, account, product) {
+    addToOrder(order, product) {
       const isManager = (this.get('session.account.id') === order.get('manager.id'));
       const attrs = { cost: product.get('cost') };
       const portion = this.get('store').createRecord('portion', attrs);
       portion.set('order', order);
-      portion.set('owner', account);
+      portion.set('owner', this.get('session.account'));
       portion.set('product', product);
 
       if (isManager) {

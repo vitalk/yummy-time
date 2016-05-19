@@ -21,17 +21,11 @@ export default Ember.Component.extend({
 
   actions: {
     add() {
-      this.attrs.add(
-        this.get('session.account'),
-        this.get('product')
-      )
+      this.attrs.add();
     },
 
     remove() {
-      this.attrs.remove(
-        this.get('session.account'),
-        this.get('product')
-      )
+      this.attrs.remove();
     }
   }
 });
