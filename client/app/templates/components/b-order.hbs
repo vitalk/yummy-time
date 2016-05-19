@@ -2,21 +2,7 @@
   <h1 class="b-order__title">Информация о заказе</h1>
 
   {{b-order-description order=order}}
+  {{b-tabs tabs=tabs}}
 
-  <ul class="b-list b-order__content">
-    {{#each groupedPortions as |group|}}
-      {{b-order-group order=order portions=group.list owner=group.grouper}}
-    {{/each}}
-  </ul>
-
-  <div class="b-order__actions">
-    <button {{action "toggleActiveState"}} class="button button_submit">
-      {{#if order.active}}Заблокировать<br>заказ{{else}}Разблокировать<br>заказ{{/if}}
-    </button>
-    {{#link-to 'checkout' order.id class="button button_submit"}}
-      Уведомить пользователей
-    {{/link-to}}
-  </div>
+  {{yield}}
 </div>
-
-{{#link-to "new-portion-order" order.id aria-label="add new portion" class="i-button-create"}}{{/link-to}}

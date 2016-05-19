@@ -1,0 +1,18 @@
+{{#b-order order=order portions=portions tabs=tabs}}
+  <ul class="b-list b-order__content">
+    {{#each groupedPortions as |group|}}
+      {{b-order-group order=order portions=group.list owner=group.grouper}}
+    {{/each}}
+  </ul>
+
+  <div class="b-order__actions">
+    <button {{action "toggleActiveState"}} class="button button_submit">
+      {{#if order.active}}Заблокировать<br>заказ{{else}}Разблокировать<br>заказ{{/if}}
+    </button>
+    {{#link-to 'checkout' order.id class="button button_submit"}}
+      Уведомить пользователей
+    {{/link-to}}
+  </div>
+
+  {{#link-to 'new-portion-order' order.id class="i-button-create"}}{{/link-to}}
+{{/b-order}}

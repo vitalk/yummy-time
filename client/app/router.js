@@ -12,7 +12,10 @@ Router.map(function() {
     this.route('active');
     this.route('inactive');
   });
-  this.route('order', { path: '/orders/:order_id' });
+  this.route('order', { path: '/orders/:order_id' }, function() {
+    this.route('index', { path: '/' });
+    this.route('participants');
+  });
   this.route('new-order', { path: '/orders/new' });
   this.route('new-portion-order', { path: '/orders/:order_id/portions/new' });
   this.route('register');
