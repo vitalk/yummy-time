@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   session: Ember.inject.service(),
   tagName: 'li',
-  classNames: ['b-order-group'],
+  classNames: ['b-list__item', 'b-order-group'],
 
   isManager: Ember.computed('session.account.id', function() {
     const currentAccountId = this.get('session.account.id');

@@ -1,7 +1,4 @@
 .b-order-group
-  &:not(:first-child)
-    margin-top: 10px
-
   &__wrapper
     cursor pointer
     padding 10px
@@ -61,33 +58,4 @@
       margin auto
 
   &__remove-btn
-    width 32px
-    height 32px
-    position relative
-    padding 0
     margin-right 8px
-
-    &:before
-      transform rotate(45deg)
-    &:after
-      transform rotate(-45deg)
-    &:before
-    &:after
-      position absolute
-      content ''
-      display block
-      left 0
-      top 0
-      bottom 0
-      right 0
-      width 18px
-      height 2px
-      background $orange
-      margin auto
-      transform-origin center
-
-    &._disabled
-      &:before
-      &:after
-        background $grD
-        cursor not-allowed

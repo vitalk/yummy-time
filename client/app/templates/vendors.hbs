@@ -1,16 +1,16 @@
-<ul class="b-vendors">
+<ul class="b-list b-vendor-list">
   {{#each model as |vendor|}}
-    <li class="b-vendors__item">
-      <div class="b-vendors__info">
-        <span class="b-vendors__title">{{vendor.title}}</span>
-        <span class="b-vendors__cost">
+    <li class="b-list__item b-vendor">
+      <div class="b-vendor__info">
+        <span class="b-vendor__title">{{vendor.title}}</span>
+        <span class="b-vendor__cost">
           Минимальная сумма заказа {{format-currency vendor.minOrderCost}}
         </span>
       </div>
       <a href="{{vendor.url}}" target="_blank"
-         class="b-vendors__link">{{vendor.url}}</a>
+         class="b-vendor__link">{{vendor.url}}</a>
     </li>
   {{/each}}
 </ul>
 
-{{#link-to "new-vendor" aria-label="add new vendor" class="btn-new-order"}}{{/link-to}}
+{{#link-to "new-vendor" aria-label="add new vendor" class="i-button-create"}}{{/link-to}}

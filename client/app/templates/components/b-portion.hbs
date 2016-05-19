@@ -1,9 +1,9 @@
 <div class="b-portion__row">
 
   {{#if canDelete}}
-    <button class="b-portion__remove-btn" {{action 'remove' portion}}></button>
+    <button class="i-button-remove b-portion__remove-btn" {{action 'remove' portion}}></button>
   {{else}}
-    <button class="b-portion__remove-btn _disabled"></button>
+    <button class="i-button-remove i-button-remove_disabled b-portion__remove-btn"></button>
   {{/if}}
   <div class="b-portion__text">
     {{#if portion.product}}

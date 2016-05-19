@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'li',
-  classNames: ['b-portion'],
+  classNames: ['b-list__item', 'b-portion'],
 
   actions: {
     remove(portion) {

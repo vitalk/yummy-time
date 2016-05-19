@@ -1,13 +1,14 @@
 .button
-  line-height 4rem
+  line-height $line-height
   text-align center
   width 100%
   margin 0 auto
   display block
-  font-size $h4-font-size
+  font-size $h5-font-size
   font-weight 700
-  min-width 240px
-  padding 0 15px
+  min-width 38px
+  padding 8px 15px
+  border-radius 3px
   box-shadow 1px 1px 5px 0 rgba($bs-dark,.5)
   transition box-shadow .2s ease-out, background .2s ease-out
   text-transform uppercase
@@ -16,94 +17,10 @@
     box-shadow 1px 1px 8px 0 rgba($bs-dark,.5)
     background rgba($bg-action,.66)
 
-  &._submit
-    border-radius 3px
+  &_submit
     background $bg-action
     color $c-light
     text-decoration none
 
     &:hover
       background rgba($bg-action,.66)
-
-.btn-menu
-  position relative
-  z-index 1
-  padding 0 10px
-  width 40px
-  height 40px
-  cursor pointer
-
-  span
-    width 100%
-    height 2px
-    display block
-    background $bg-light
-
-    &:not(:first-child)
-      margin-top 4px
-
-.btn-logo
-  position relative
-  z-index 1
-
-.btn-logout
-  width 40px
-  height 40px
-  text-decoration none
-  display block
-
-  .i-logout
-    width 19px
-    height 20px
-    fill $bg-light
-    margin-bottom 0
-    vertical-align middle
-    display inline-block
-
-.btn-new-order
-  width 50px
-  height 50px
-  border-radius 50%
-  box-shadow 1px 1px 3px 0 rgba($bs-dark,0.33)
-  position absolute
-  right 15px
-  bottom -60px
-  background $bg-action
-  display block
-  transition opacity .2s ease-out
-
-  &:hover
-    opacity .75
-
-  &:before
-  &:after
-    left 0
-    top 0
-    bottom 0
-    right 0
-    margin auto
-    background $c-light
-    content ''
-    position absolute
-    display block
-
-  &:before
-    width 28px
-    height 4px
-
-  &:after
-    height 28px
-    width 4px
-
-  @media $max767
-    width 44px
-    height 44px
-
-    &:before
-      width 24px
-
-    &:after
-      height 24px
-
-  @media $max767portrait
-    bottom -55px

@@ -1,0 +1,7 @@
+<ul class="b-tabs">
+  {{#each tabs as |tab|}}
+    <li class="b-tabs__item">
+      {{#link-to tab.endpoint class="b-tabs__link" activeClass=activeClass}}{{tab.title}}{{/link-to}}
+    </li>
+  {{/each}}
+</ul>

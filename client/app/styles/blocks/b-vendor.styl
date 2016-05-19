@@ -1,0 +1,28 @@
+.b-vendor
+  box-shadow 1px 1px 5px 0 rgba($bs-dark,.5)
+  background $bg-light
+  transition box-shadow .2s ease-out
+  padding 10px
+
+  &:hover
+    box-shadow 1px 1px 8px 0 rgba($bs-dark,.5)
+
+  &__info
+    display flex
+    align-items baseline
+    margin-bottom 10px
+
+  &__title
+    font-size $h2-font-size
+
+  &__cost
+    margin-left auto
+    font-size $h6-font-size
+
+  &__link
+    font-size $h5-font-size
+    color $c-dark
+    transition color .2s ease-out
+
+    &:hover
+      color $bg-primary

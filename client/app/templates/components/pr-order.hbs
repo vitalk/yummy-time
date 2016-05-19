@@ -20,7 +20,7 @@
       {{#if order.isReady}}
         <span class="b-order-money__total">{{format-currency order.money.total}}</span>
       {{else}}
-        <span class="b-order-money__total _not-enough"
+        <span class="b-order-money__total b-order-money__total_not-enough"
               title="Минимальная сумма заказа {{format-currency order.money.required sep=' '}}">
           {{format-currency order.money.total}}
         </span>

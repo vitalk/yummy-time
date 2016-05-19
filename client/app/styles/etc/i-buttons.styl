@@ -1,0 +1,114 @@
+.i-button-menu
+  position relative
+  z-index 1
+  padding 0 10px
+  width 40px
+  height 40px
+  cursor pointer
+
+  span
+    width 100%
+    height 2px
+    display block
+    background $bg-light
+
+    &:not(:first-child)
+      margin-top 4px
+
+.i-button-logo
+  position relative
+  z-index 1
+
+.i-button-logout
+  width 40px
+  height 40px
+  text-decoration none
+  display block
+
+  .i-logout
+    width 19px
+    height 20px
+    fill $bg-light
+    margin-bottom 0
+    vertical-align middle
+    display inline-block
+
+.i-button-create
+  width 50px
+  height 50px
+  border-radius 50%
+  box-shadow 1px 1px 3px 0 rgba($bs-dark,0.33)
+  position absolute
+  right 15px
+  bottom -60px
+  background $bg-action
+  display block
+  transition opacity .2s ease-out
+
+  &:hover
+    opacity .75
+
+  &:before
+  &:after
+    left 0
+    top 0
+    bottom 0
+    right 0
+    margin auto
+    background $c-light
+    content ''
+    position absolute
+    display block
+
+  &:before
+    width 28px
+    height 4px
+
+  &:after
+    height 28px
+    width 4px
+
+  @media $max767
+    width 44px
+    height 44px
+
+    &:before
+      width 24px
+
+    &:after
+      height 24px
+
+  @media $max767portrait
+    bottom -55px
+
+.i-button-remove
+  width 32px
+  height 32px
+  position relative
+  padding 0
+
+  &:before
+    transform rotate(45deg)
+  &:after
+    transform rotate(-45deg)
+  &:before
+  &:after
+    position absolute
+    content ''
+    display block
+    left 0
+    top 0
+    bottom 0
+    right 0
+    width 18px
+    height 2px
+    background $bg-primary
+    margin auto
+    transform-origin center
+
+  &_disabled
+    &:before
+    &:after
+      background $grD
+      cursor not-allowed
+
