@@ -27,5 +27,5 @@ test('should be disabled if required', function(assert) {
   this.set('onchange', () => {});
   this.set('disabled', true);
   this.render(hbs`{{b-checkbox onchange=(action onchange) disabled=disabled}}`);
-  assert.ok(this.$('.checkbox').hasClass('_disabled'));
+  assert.ok(this.$('.checkbox').hasClass('checkbox_disabled'));
 })
