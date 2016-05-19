@@ -2,9 +2,9 @@
   <div class="b-order-group__row">
 
     {{#if canDelete}}
-      <button {{action 'removeAll'}} class="b-portion__remove-btn btn-remove"></button>
+      <button {{action 'removeAll'}} class="i-button-remove b-portion__remove-btn"></button>
     {{else}}
-      <button class="b-portion__remove-btn btn-remove _disabled"></button>
+      <button class="i-button-remove _disabled b-portion__remove-btn"></button>
     {{/if}}
     <div class="b-order-group__person b-person">
       <span class="b-person__name">{{owner.displayName}}</span>

@@ -29,7 +29,7 @@
   <a href="/" class="i-logo">Yummy Time</a>
   <header class="s-header">
     {{#if session.isAuthenticated}}
-      <button class="btn-menu" aria-label="toggle site menu" {{action "slide"}}>
+      <button class="i-button-menu" aria-label="toggle site menu" {{action "slide"}}>
         <span></span>
         <span></span>
         <span></span>
@@ -37,7 +37,7 @@
     {{/if}}
 
     {{#if session.isAuthenticated}}
-      <button class="btn-logout" {{action 'invalidateSession'}}>
+      <button class="i-button-logout" {{action 'invalidateSession'}}>
         {{i-logout}}
       </button>
     {{/if}}
