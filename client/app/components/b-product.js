@@ -14,8 +14,9 @@ export default Ember.Component.extend({
   accountProducts: Ember.computed.mapBy('accountPortions', 'product'),
 
   inOrder: Ember.computed.filter('accountProducts', function() {
+    // eslint-disable-next-line arrow-body-style
     return Ember.isPresent(this.get('accountProducts').filter((item) => {
-      return item.get('id') === this.get('product').get('id')
+      return item.get('id') === this.get('product').get('id');
     }));
   }),
 

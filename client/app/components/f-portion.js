@@ -31,6 +31,7 @@ export default Ember.Component.extend({
     },
 
     removeFromOrder(order, product) {
+      // eslint-disable-next-line arrow-body-style
       const portions = this.get('accountPortions').filter((portion) => {
         return portion.get('product.id') === product.get('id');
       });
