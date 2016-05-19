@@ -13,7 +13,9 @@
   <ul class="b-list b-product-list">
     {{#each products as |product|}}
       <li class="b-list__item">
-        {{b-product product=product portions=order.portions add=(action 'addToOrder' order)}}
+        {{b-product product=product portions=order.portions
+                    add=(action 'addToOrder' order)
+                    remove=(action 'removeFromOrder' order product)}}
       </li>
     {{/each}}
   </ul>

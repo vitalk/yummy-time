@@ -25,6 +25,13 @@ export default Ember.Component.extend({
         this.get('session.account'),
         this.get('product')
       )
+    },
+
+    remove() {
+      this.attrs.remove(
+        this.get('session.account'),
+        this.get('product')
+      )
     }
   }
 });
