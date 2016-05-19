@@ -6,18 +6,11 @@
     {{b-order-description order=order}}
   </div>
 
-  <div class="f-default__wrapper">
-    {{b-selectize content=products
-                  optionValuePath='content.id'
-                  optionLabelPath='content.name'
-                  selectItem=(action 'selectProduct')
-                  valuePath='product'
-                  model=this
-                  placeholder='Заказ'}}
-
-    {{b-textarea model=this valuePath='text' rows='2' placeholder='Комментарий'}}
-    {{b-input model=this type='tel' valuePath='cost' placeholder='Сумма' disabled=productSelected}}
-  </div>
-
-  <button {{action "submit"}} class="button button_submit">Добавить</button>
+  <ul class="b-list b-product-list">
+    {{#each products as |product|}}
+      <li class="b-list__item">
+        {{b-product product=product}}
+      </li>
+    {{/each}}
+  </ul>
 </form>
