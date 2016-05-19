@@ -5,5 +5,9 @@
   <div class="b-product__cost">{{format-currency product.cost}}</div>
 </div>
 <div class="b-product__control">
-  <button class="button button_submit" {{action 'add'}}>Добавить</button>
+  {{#if inOrder}}
+    <button class="button button_submit">Удалить</button>
+  {{else}}
+    <button class="button button_submit" {{action 'add'}}>Добавить</button>
+  {{/if}}
 </div>

@@ -3,13 +3,18 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model(params) {
-    return this.store.findRecord('order', params.order_id);
+    return Ember.RSVP.hash({
+      order: this.store.findRecord('order', params.order_id),
+      portions: this.store.query('portion', {
+        filter: { simple: { order: params.order_id, deleted: false } }
+      })
+    });
   },
 
   setupController(controller, model) {
     this._super(controller, model);
 
-    const vendorId = model.get('vendor.id');
+    const vendorId = model.order.get('vendor.id');
     this.store.query('product', {
       filter: { simple: { vendor: vendorId } }
     }).then((products) => {
