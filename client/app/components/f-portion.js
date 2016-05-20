@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   session: Ember.inject.service(),
   store: Ember.inject.service(),
 
-  accountPortions: Ember.computed.filter('order.portions', function(portion) {
+  myPortions: Ember.computed.filter('order.portions', function(portion) {
     return portion.get('owner.id') === this.get('session.account.id');
   }),
 
@@ -32,7 +32,7 @@ export default Ember.Component.extend({
 
     removeFromOrder(order, product) {
       // eslint-disable-next-line arrow-body-style
-      const portions = this.get('accountPortions').filter((portion) => {
+      const portions = this.get('myPortions').filter((portion) => {
         return portion.get('product.id') === product.get('id');
       });
 

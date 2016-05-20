@@ -7,18 +7,23 @@ export default Ember.Component.extend({
 
   portions: Ember.A(),
 
-  accountPortions: Ember.computed.filter('portions', function(portion) {
-    return portion.get('owner.id') === this.get('session.account.id');
+  myPortions: Ember.computed('portions.[]', function() {
+    return this.get('portions').filter((portion) => {
+      return (!portion.get('deleted') &&
+              portion.get('owner.id') === this.get('session.account.id'));
+    });
   }),
-
-  accountProducts: Ember.computed.mapBy('accountPortions', 'product'),
-
-  inOrder: Ember.computed.filter('accountProducts', function() {
-    // eslint-disable-next-line arrow-body-style
-    return Ember.isPresent(this.get('accountProducts').filter((item) => {
-      return item.get('id') === this.get('product').get('id');
-    }));
+  myProducts: Ember.computed.mapBy('myPortions', 'product'),
+  productItems: Ember.computed.filter('myProducts', function(item) {
+    return item.get('id') === this.get('product.id');
   }),
+  productQuantity: Ember.computed('productItems', function() {
+    return this.get('productItems').length;
+  }),
+  inOrder: Ember.computed.gt('productQuantity', 0),
+
+  canAdd: true,
+  canRemove: Ember.computed.gt('productQuantity', 0),
 
   actions: {
     add() {

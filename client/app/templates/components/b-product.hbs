@@ -6,7 +6,9 @@
 </div>
 <div class="b-product__control">
   {{#if inOrder}}
-    {{b-product-quantity}}
+    {{b-product-quantity quantity=productQuantity
+                         canAdd=canAdd add=(action 'add')
+                         canRemove=canRemove remove=(action 'remove')}}
   {{else}}
     <button class="button button_submit" {{action 'add'}}>Добавить</button>
   {{/if}}

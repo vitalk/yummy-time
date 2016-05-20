@@ -1,4 +1,16 @@
-<button class="b-input-group__item b-input-group__button button">-</button>
-<input class="b-input-group__item b-input-group__control
-              b-product-quantity__control" type="tel">
-<button class="b-input-group__item b-input-group__button button">+</button>
+{{#if canRemove}}
+  <button class="b-input-group__item b-input-group__button button"
+          {{action 'remove'}}>-</button>
+{{else}}
+  <button class="b-input-group__item b-input-group__button
+                 button button_disabled">-</button>
+{{/if}}
+{{input class="b-input-group__item b-input-group__control
+               b-product-quantity__control" type="tel" value=quantity disabled=true}}
+{{#if canAdd}}
+  <button class="b-input-group__item b-input-group__button button"
+          {{action 'add'}}>+</button>
+{{else}}
+  <button class="b-input-group__item b-input-group__button
+                 button button_disabled">+</button>
+{{/if}}
