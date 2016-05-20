@@ -18,6 +18,10 @@
                          canAdd=canAdd add=(action 'add')
                          canRemove=canRemove remove=(action 'remove')}}
   {{else}}
-    <button class="button button_submit" {{action 'add'}}>Добавить</button>
+    {{#if canAdd}}
+      <button class="button button_submit" {{action 'add'}}>Добавить</button>
+    {{else}}
+      <button class="button button_submit button_disabled">Добавить</button>
+    {{/if}}
   {{/if}}
 </div>
