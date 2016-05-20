@@ -9,19 +9,30 @@
   min-width 40px
   padding 8px 15px
   border-radius 3px
-  box-shadow 1px 1px 5px 0 rgba($bs-dark,.5)
-  transition box-shadow .2s ease-out, background .2s ease-out
+  border 1px solid $grD
+  transition background .2s ease-out
   text-transform uppercase
   user-select none
 
   &:hover
-    box-shadow 1px 1px 8px 0 rgba($bs-dark,.5)
     background rgba($bg-action,.66)
+
+  &:focus
+    z-index 1
+    outline 1px solid $bg-primary
+    border-color $bg-primary
+    box-shadow 0 0 0 1px $bg-action;
 
   &_submit
     background $bg-action
+    border-color rgba($bg-action,.33)
     color $c-light
     text-decoration none
 
     &:hover
       background rgba($bg-action,.66)
+
+    &:focus
+      outline none
+      box-shadow 0 0 0 1px $bg-action,
+                 1px 1px 5px 0 rgba($bg-action,.66)
