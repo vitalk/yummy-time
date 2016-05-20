@@ -7,6 +7,14 @@ export default Ember.Route.extend({
       portions: this.store.query('portion', {
         filter: { simple: { order: params.order_id, deleted: false } }
       })
+    }).then((result) => {
+      const ids = result.portions.map((p) => p.get('product.id'));
+      return this.store.query('product', {
+        filter: { simple: { _id: { $in: ids.uniq() } } }
+      }).then((products) => {
+        result.products = products;
+        return result;
+      });
     });
   }
 });
