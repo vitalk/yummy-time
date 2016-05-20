@@ -25,6 +25,10 @@ export default Ember.Component.extend({
   canAdd: true,
   canRemove: Ember.computed.gt('productQuantity', 0),
 
+  productTotal: Ember.computed('product.cost', 'productQuantity', function() {
+    return this.get('productQuantity') * this.get('product.cost');
+  }),
+
   actions: {
     add() {
       this.attrs.add();

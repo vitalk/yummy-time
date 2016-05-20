@@ -2,7 +2,15 @@
 <div class="b-product__body">
   <div class="b-product__name">{{product.name}}</div>
   <div class="b-product__text">{{product.text}}</div>
-  <div class="b-product__cost">{{format-currency product.cost}}</div>
+  <div class="b-product__cost">
+    {{format-currency product.cost}}
+    {{#if inOrder}}
+      <span class="b-product__total">
+        <span class="b-product__quantity">×&nbsp;{{productQuantity}}&nbsp;=</span>
+        <span class="b-product__value">{{format-currency productTotal}}</span>
+      </span>
+    {{/if}}
+  </div>
 </div>
 <div class="b-product__control">
   {{#if inOrder}}
