@@ -12,9 +12,9 @@
   </ul>
 
   <div class="b-order__actions">
-    <button {{action "toggleActiveState"}} class="button button_submit">
-      {{#if order.active}}Заблокировать<br>заказ{{else}}Разблокировать<br>заказ{{/if}}
-    </button>
+    {{#link-to 'order.checkout' order.id class="button button_submit"}}
+      Приступить к оформлению заказа
+    {{/link-to}}
     {{#link-to 'order.notify' order.id class="button button_submit"}}
       Уведомить пользователей
     {{/link-to}}

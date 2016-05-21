@@ -14,6 +14,7 @@ Router.map(function() {
   });
   this.route('order', { path: '/orders/:order_id' }, function() {
     this.route('index', { path: '/' });
+    this.route('checkout');
     this.route('notify');
     this.route('participants');
     this.route('products');

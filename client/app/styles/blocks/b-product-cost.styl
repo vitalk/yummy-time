@@ -1,0 +1,31 @@
+.b-product-cost
+
+  &__total
+    font-weight bold
+    font-size $h4-font-size
+
+    &_muted
+      font-size $h6-font-size
+
+  &__value
+  &__quantity
+    font-size $h6-font-size
+    color $gr3
+
+  &_right
+    text-align right
+
+  &_invert
+    .b-product-cost__total
+      font-size $h6-font-size
+
+    .b-product-cost__value
+      font-size $h4-font-size
+
+  &_wrapped
+    &:before
+      content '( '
+
+    &:after
+      content ' )'
+

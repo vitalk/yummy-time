@@ -1,0 +1,25 @@
+<div class="b-product b-product-group__grouper">
+  <div class="b-product__image"></div>
+  <div class="b-product__body">
+    <div class="b-product__name">{{product.name}}</div>
+    <div class="b-product__text">{{product.text}}</div>
+  </div>
+  <div class="b-product-cost b-product-cost_right b-product__cost">
+    <div class="b-product-cost__total">{{format-currency productTotalCost}}</div>
+    <div class="b-product-cost__description">
+      <span class="b-product-cost__value">=&nbsp;{{product.cost}}</span>
+      <span class="b-product-cost__quantity">×&nbsp;{{productQuantity}}</span>
+    </div>
+  </div>
+</div>
+
+<ul class="b-product-group__list">
+  {{#each productPersons as |person|}}
+    <li class="b-product-group__item">
+      <span class="b-person b-person_muted">
+        <span class="b-person__name">{{person.displayName}}</span>
+      </span>
+      {{b-product-group-cost product=product person=person portions=portions}}
+    </li>
+  {{/each}}
+</ul>

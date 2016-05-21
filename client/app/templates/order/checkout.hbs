@@ -1,0 +1,11 @@
+<div class="b-order">
+  <h1 class="b-order__title">Оформление заказа</h1>
+
+  {{b-order-description order=model.order}}
+
+  <ul class="b-list b-product-list">
+    {{#each orderProducts as |product|}}
+      {{b-product-group product=product portions=order.portions}}
+    {{/each}}
+  </ul>
+</div>

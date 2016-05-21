@@ -2,12 +2,12 @@
 <div class="b-product__body">
   <div class="b-product__name">{{product.name}}</div>
   <div class="b-product__text">{{product.text}}</div>
-  <div class="b-product__cost">
-    {{format-currency product.cost}}
+  <div class="b-product-cost b-product-cost_invert b-product__cost">
+    <span class="b-product-cost__value">{{format-currency product.cost}}</span>
     {{#if inOrder}}
-      <span class="b-product__total">
-        <span class="b-product__quantity">×&nbsp;{{productQuantity}}&nbsp;=</span>
-        <span class="b-product__value">{{format-currency productTotal}}</span>
+      <span class="b-product-cost__description">
+        <span class="b-product-cost__quantity">×&nbsp;{{productQuantity}}&nbsp;=</span>
+        <span class="b-product-cost__total">{{format-currency productTotal}}</span>
       </span>
     {{/if}}
   </div>
