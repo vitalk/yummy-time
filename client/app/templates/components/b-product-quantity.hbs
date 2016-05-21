@@ -5,8 +5,8 @@
   <button class="b-input-group__item b-input-group__button
                  button button_disabled">-</button>
 {{/if}}
-{{input class="b-input-group__item b-input-group__control
-               b-product-quantity__control" type="tel" value=quantity disabled=true}}
+{{input class='b-input-group__item b-input-group__control b-input-group__control_disabled
+               b-product-quantity__control' type="tel" value=quantity disabled=true}}
 {{#if canAdd}}
   <button class="b-input-group__item b-input-group__button button"
           {{action 'add'}}>+</button>
