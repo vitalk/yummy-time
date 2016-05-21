@@ -8,6 +8,9 @@ const Validations = buildValidations({
 });
 
 export default Ember.Component.extend(Validations, {
+  tagName: 'form',
+  classNames: ['f-default', 'f-notification'],
+
   session: Ember.inject.service(),
   didValidate: false,
 
