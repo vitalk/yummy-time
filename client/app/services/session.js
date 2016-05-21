@@ -10,14 +10,17 @@ export default ESASession.extend({
         const jwt = Ember.getOwner(this).lookup('authenticator:jwt');
         const payload = jwt.getTokenData(this.get('session.authenticated.token'));
 
+        this.set('accountId', payload);
         this.get('store').find('account', payload).then((account) => {
           this.set('account', account);
         });
       } catch (err) {
         this.set('account', null);
+        this.set('accountId', null);
       }
     } else {
       this.set('account', null);
+      this.set('accountId', null);
     }
   })
 });
