@@ -11,9 +11,8 @@
   </div>
   <div class="pr-order__row">
     <div class="pr-order__manager b-person">
-      <div class="b-person__name">
-        {{order.manager.displayName}}/{{order.location}}
-      </div>
+      <span class="b-person__name">{{order.manager.displayName}}</span>
+      <span class="pr-order__location">{{order.location}}</span>
     </div>
     <div class="pr-order__money b-order-money">
       <span class="b-order-money__available">{{format-currency order.money.available}}</span>
