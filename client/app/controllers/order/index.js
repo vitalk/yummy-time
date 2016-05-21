@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { groupBy } from '../../helpers/group-by';
 
+// eslint-disable-next-line new-cap
 export const NavigationTabsMixin = Ember.Mixin.create({
   tabs: new Ember.A([
     Ember.Object.create({ endpoint: 'order.index', title: 'Блюда' }),
@@ -49,6 +50,7 @@ export const ProductActionsMixin = Ember.Mixin.create({
       if (Ember.isPresent(portions)) {
         const portion = portions[0];
 
+        // eslint-disable-next-line no-shadow
         portion.get('order').then((order) => {
           order.removePortion(portion);
           order.save().then(() => {

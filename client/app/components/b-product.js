@@ -5,9 +5,9 @@ export default Ember.Component.extend({
   classNames: ['b-product'],
   session: Ember.inject.service(),
 
-  portions: Ember.A(),
-
+  portions: new Ember.A(),
   myPortions: Ember.computed('portions.[]', function() {
+    // eslint-disable-next-line arrow-body-style
     return this.get('portions').filter((portion) => {
       return (!portion.get('deleted') &&
               portion.get('owner.id') === this.get('session.account.id'));

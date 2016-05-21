@@ -12,6 +12,7 @@ export default Ember.Route.extend({
       return this.store.query('product', {
         filter: { simple: { _id: { $in: ids.uniq() } } }
       }).then((products) => {
+        // eslint-disable-next-line no-param-reassign
         result.products = products;
         return result;
       });
