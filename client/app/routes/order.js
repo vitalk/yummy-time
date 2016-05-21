@@ -15,6 +15,17 @@ export default Ember.Route.extend({
         // eslint-disable-next-line no-param-reassign
         result.products = products;
         return result;
+        // eslint-disable-next-line no-shadow
+      }).then((result) => {
+        // eslint-disable-next-line no-shadow
+        const ids = result.portions.map((p) => p.get('owner.id'));
+        return this.store.query('account', {
+          filter: { simple: { _id: { $in: ids.uniq() } } }
+        }).then((participants) => {
+          // eslint-disable-next-line no-param-reassign
+          result.participants = participants;
+          return result;
+        });
       });
     });
   }

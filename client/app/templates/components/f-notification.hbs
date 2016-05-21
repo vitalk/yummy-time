@@ -8,4 +8,8 @@
   {{b-textarea model=this valuePath='message' rows='4' placeholder='Введите сообщение'}}
 </div>
 
+{{#if showNote}}
+  <div class="f-default__note">{{note}}</div>
+{{/if}}
+
 <button {{action 'submit'}} type="submit" class="button button_submit">Отправить уведомление</button>
