@@ -3,8 +3,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: 'span',
   classNames: ['b-product-cost'],
-  classNameBindings: ['wrapped:b-product-cost_wrapped'],
+  classNameBindings: ['wrapped:b-product-cost_wrapped', 'bold:b-product-cost_bold'],
   wrapped: true,
+  bold: true,
 
   // eslint-disable-next-line max-len
   products: Ember.computed('portions.[]', 'portions.@each.deleted', 'portions.@each.paid', function() {

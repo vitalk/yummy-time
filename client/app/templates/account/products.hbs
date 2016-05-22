@@ -1,0 +1,7 @@
+{{b-tabs tabs=tabs}}
+
+<ul class="b-list b-product-list">
+  {{#each myProducts as |product|}}
+    {{b-product-group-by-order product=product portions=myPortions}}
+  {{/each}}
+</ul>

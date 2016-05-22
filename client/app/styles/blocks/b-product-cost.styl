@@ -1,7 +1,6 @@
 .b-product-cost
 
   &__total
-    font-weight bold
     font-size $h4-font-size
 
     &_muted
@@ -28,4 +27,8 @@
 
     &:after
       content ' )'
+
+  &_bold
+    .b-product-cost__total
+      font-weight bold
 

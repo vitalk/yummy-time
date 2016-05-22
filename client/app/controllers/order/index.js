@@ -33,11 +33,15 @@ export const ProductActionsMixin = Ember.Mixin.create({
       }
 
       portion.save().then(() => {
-        order.addPortion(portion);
-        if (isManager) {
-          portion.updateOrderMoney(order);
-        }
-        order.save();
+        portion.get('order').then((order) => {
+          order.addPortion(portion);
+
+          if (isManager) {
+            portion.updateOrderMoney(order);
+          }
+
+          order.save();
+        })
       });
     },
 
