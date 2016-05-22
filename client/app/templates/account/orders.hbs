@@ -1,3 +1,5 @@
 {{b-tabs tabs=tabs}}
-{{b-order-list orders=model}}
+{{#b-order-list orders=model as |order|}}
+  {{pr-order order=order}}
+{{/b-order-list}}
 {{#link-to "new-order" class="i-button-create"}}{{/link-to}}

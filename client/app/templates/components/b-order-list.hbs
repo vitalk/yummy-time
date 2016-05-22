@@ -1,5 +1,9 @@
 {{#each orders as |order|}}
   <li class="b-list__item b-order-list__item">
-    {{pr-order order=order}}
+    {{#if hasBlock}}
+      {{yield order}}
+    {{else}}
+      {{pr-order order=order}}
+    {{/if}}
   </li>
 {{/each}}
