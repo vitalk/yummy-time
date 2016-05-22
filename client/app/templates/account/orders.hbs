@@ -1,5 +1,5 @@
 {{b-tabs tabs=tabs}}
 {{#b-order-list orders=model as |order|}}
-  {{pr-order order=order}}
+  {{pr-order order=order isMine=true}}
 {{/b-order-list}}
 {{#link-to "new-order" class="i-button-create"}}{{/link-to}}
