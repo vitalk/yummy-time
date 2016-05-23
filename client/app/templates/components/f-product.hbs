@@ -9,7 +9,8 @@
     Выберите любые понравившиеся блюда, чтобы добавить их к заказу
   </h3>
 
-  {{input class="f-product__search" type="text" value=filter}}
+  {{input class="f-default__field f-product__field" type="text" value=filter
+          placeholder="Поиск, например «пицца»"}}
 
   <ul class="b-list b-product-list">
     {{#each filteredProducts as |product|}}
