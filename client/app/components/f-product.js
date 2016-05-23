@@ -19,5 +19,12 @@ export default Ember.Component.extend(ProductActionsMixin, {
     }
 
     return this.get('products');
+  }),
+
+  anythingSelected: Ember.computed.notEmpty('myPortions'),
+  totalCost: Ember.computed('myPortions', function() {
+    return this.get('myPortions').reduce((sum, portion) => {
+      return sum + portion.get('cost');
+    }, 0);
   })
 });

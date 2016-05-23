@@ -12,6 +12,12 @@
   {{input class="f-default__field f-product__field" type="text" value=filter
           placeholder="Поиск, например «пицца»" autofocus=true}}
 
+  {{#if anythingSelected}}
+    <div class="f-product__summary">итого
+      <span class="f-product__cost">{{format-currency totalCost}}</span>
+    </div>
+  {{/if}}
+
   <ul class="b-list b-product-list">
     {{#each filteredProducts as |product|}}
       <li class="b-list__item">
