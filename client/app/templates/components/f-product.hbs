@@ -30,6 +30,12 @@
     {{/each}}
   </ul>
 
+  {{#unless filteredProducts}}
+    <h3 class="f-product__subtle">
+      Очень жаль, но по данным критериям ничего не найдено :(
+    </h3>
+  {{/unless}}
+
 {{else}}
   <h3 class="f-product__subtle">
     Очень жаль, но автор запретил добавление новых заявок к этому заказу и
