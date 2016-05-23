@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 
   productPortions: Ember.computed('portions.[]', 'portions.@each.deleted', function() {
     return this.get('portions').filter((portion) => {
-      return (!portion.get('deleted') &&
+      return (!portion.get('deleted') && portion.get('paid') &&
               portion.get('product.id') === this.get('product.id'));
     });
   }),
