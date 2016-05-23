@@ -9,8 +9,10 @@
     Выберите любые понравившиеся блюда, чтобы добавить их к заказу
   </h3>
 
+  {{input class="f-product__search" type="text" value=filter}}
+
   <ul class="b-list b-product-list">
-    {{#each products as |product|}}
+    {{#each filteredProducts as |product|}}
       <li class="b-list__item">
         {{b-product order=order
                     product=product
