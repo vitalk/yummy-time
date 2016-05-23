@@ -13,6 +13,7 @@ export default Ember.Component.extend(ProductActionsMixin, {
     const regexp = new RegExp(filter, 'i');
 
     if (filter) {
+      // eslint-disable-next-line arrow-body-style
       return this.get('products').filter((product) => {
         return regexp.test(product.get('name'));
       });
@@ -23,6 +24,7 @@ export default Ember.Component.extend(ProductActionsMixin, {
 
   anythingSelected: Ember.computed.notEmpty('myPortions'),
   totalCost: Ember.computed('myPortions', function() {
+    // eslint-disable-next-line arrow-body-style
     return this.get('myPortions').reduce((sum, portion) => {
       return sum + portion.get('cost');
     }, 0);
