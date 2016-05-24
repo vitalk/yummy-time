@@ -1,7 +1,21 @@
-import { formatCurrency } from 'client/helpers/format-currency';
+import { formatCurrency, isNumber } from 'client/helpers/format-currency';
 import { module, test } from 'qunit';
 
 module('Unit | Helper | format currency');
+
+test('should detect number', function(assert) {
+  assert.ok(isNumber(42));
+  assert.ok(isNumber(42.2));
+});
+
+test('should detect undefined value', function(assert) {
+  assert.notOk(isNumber(undefined));
+});
+
+test('should ignore non-numeric input', function(assert) {
+  assert.equal(formatCurrency([undefined], {}), undefined);
+  assert.equal(formatCurrency(['string'], {}), 'string');
+});
 
 test('should split number into groups', function(assert) {
   assert.equal(formatCurrency([1234567], { sep: ',' }), '1,234,567');
