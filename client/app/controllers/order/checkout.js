@@ -22,5 +22,7 @@ export default Ember.Controller.extend({
     return this.get('orderPortions').reduce((sum, portion) => {
       return sum + portion.get('cost');
     }, 0);
-  })
+  }),
+
+  isReady: Ember.computed.bool('order.isReady')
 });
