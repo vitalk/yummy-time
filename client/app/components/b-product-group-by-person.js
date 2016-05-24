@@ -5,7 +5,8 @@ export default Ember.Component.extend({
   tagName: 'li',
   classNames: ['b-list__item', 'b-product-group'],
 
-  productPortions: Ember.computed('portions.[]', 'portions.@each.deleted', function() {
+  // eslint-disable-next-line max-len
+  productPortions: Ember.computed('portions.[]', 'portions.@each.deleted', 'portions.@each.paid', function() {
     // eslint-disable-next-line arrow-body-style
     return this.get('portions').filter((portion) => {
       return (!portion.get('deleted') && portion.get('paid') &&

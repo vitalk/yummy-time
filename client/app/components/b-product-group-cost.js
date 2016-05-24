@@ -6,7 +6,8 @@ export default Ember.Component.extend({
   classNameBindings: ['wrapped:b-product-cost_wrapped'],
   wrapped: true,
 
-  products: Ember.computed('portions.[]', 'portions.@each.deleted', function() {
+  // eslint-disable-next-line max-len
+  products: Ember.computed('portions.[]', 'portions.@each.deleted', 'portions.@each.paid', function() {
     // eslint-disable-next-line arrow-body-style
     return this.get('portions').filter((portion) => {
       return (portion.get('product.id') === this.get('product.id') &&

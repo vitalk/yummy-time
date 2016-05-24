@@ -5,7 +5,8 @@ export default Ember.Controller.extend({
   order: Ember.computed.alias('model.order'),
   portions: Ember.computed.alias('model.portions'),
 
-  orderPortions: Ember.computed('order.portions.[]', 'order.portions.@each.deleted', function() {
+  // eslint-disable-next-line max-len
+  orderPortions: Ember.computed('order.portions.[]', 'order.portions.@each.deleted', 'order.portions.@each.paid', function() {
     // eslint-disable-next-line arrow-body-style
     return this.get('order.portions').filter((portion) => {
       return (!portion.get('deleted') && portion.get('paid'));
