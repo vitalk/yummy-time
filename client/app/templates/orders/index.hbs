@@ -1,3 +1,10 @@
 {{b-tabs tabs=tabs}}
-{{b-order-list model=model}}
+
+{{#unless foundNothing}}
+  {{b-order-list model=model}}
+
+{{else}}
+  {{b-blank-orders}}
+{{/unless}}
+
 {{#link-to "new-order" aria-label="add new order" class="i-button-create"}}{{/link-to}}
