@@ -17,14 +17,6 @@ test('should render portion', function(assert) {
   this.set('portion', portionStub);
   this.render(hbs`{{b-portion portion=portion}}`);
 
-  assert.equal(this.$('.b-portion__cost').text(), '42');
-  assert.equal(this.$('.b-portion__text').text().trim(), 'hi\n    ×');
-});
-
-test('should toggle paid status', function(assert) {
-  this.set('portion', portionStub);
-  this.render(hbs`{{b-portion portion=portion}}`);
-  this.$('input').click();
-
-  assert.ok(this.get('portion.paid'));
+  assert.equal(this.$('.b-portion__cost').text().trim(), '42');
+  assert.equal(this.$('.b-portion__text').text().trim(), 'hi');
 });

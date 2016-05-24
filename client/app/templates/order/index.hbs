@@ -1,0 +1,24 @@
+{{#b-order order=order portions=portions tabs=tabs}}
+  <ul class="b-list b-order__content">
+    {{#each groups as |group|}}
+      <li class="b-list__item">
+        {{b-product order=order
+                    product=group.grouper
+                    portions=order.portions
+                    add=(action 'addToOrder' order group.grouper)
+                    remove=(action 'removeFromOrder' order group.grouper)}}
+      </li>
+    {{/each}}
+  </ul>
+
+  <div class="b-order__actions">
+    <button {{action "toggleActiveState"}} class="button button_submit">
+      {{#if order.active}}Заблокировать<br>заказ{{else}}Разблокировать<br>заказ{{/if}}
+    </button>
+    {{#link-to 'checkout' order.id class="button button_submit"}}
+      Уведомить пользователей
+    {{/link-to}}
+  </div>
+
+  {{#link-to 'order.products' order.id class="i-button-create"}}{{/link-to}}
+{{/b-order}}

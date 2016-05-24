@@ -1,0 +1,38 @@
+.b-product
+  display flex
+  justify-content space-between
+  padding 10px
+  background $bg-light
+  color $c-dark
+
+  &__image
+    &:empty
+      display none
+
+  &__body
+    margin-right 8px
+
+  &__control
+    width 120px
+    align-self center
+
+  &__name
+    font-size $h3-font-size
+    margin-bottom 10px
+
+  &__text
+    font-size $h5-font-size
+    margin-bottom 10px
+
+    &:empty
+      display none
+
+  &__cost
+    font-size $h4-font-size
+
+  &__total
+    font-size $h6-font-size
+    color $gr3
+
+  &__value
+    font-weight bold

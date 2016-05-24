@@ -18,8 +18,8 @@ test('should render order', function(assert) {
   this.set('order', orderStub);
   this.render(hbs`{{b-order-description order=order}}`);
 
-  assert.equal(this.$('.b-order__place').text(), 'vendor title');
-  assert.equal(this.$('.b-order__time').text(), 'time');
+  assert.equal(this.$('.b-order__place').text().trim(), 'vendor title');
+  assert.equal(this.$('.b-order__time').text().trim(), 'time');
   assert.equal(this.$('.b-person__name').text().trim(), 'displayName/location');
   assert.equal(this.$('.b-order-money__available').text(), '0');
   assert.equal(this.$('.b-order-money__total').text(), '42');

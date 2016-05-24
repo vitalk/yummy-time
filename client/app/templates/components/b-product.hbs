@@ -1,0 +1,27 @@
+<div class="b-product__image"></div>
+<div class="b-product__body">
+  <div class="b-product__name">{{product.name}}</div>
+  <div class="b-product__text">{{product.text}}</div>
+  <div class="b-product__cost">
+    {{format-currency product.cost}}
+    {{#if inOrder}}
+      <span class="b-product__total">
+        <span class="b-product__quantity">×&nbsp;{{productQuantity}}&nbsp;=</span>
+        <span class="b-product__value">{{format-currency productTotal}}</span>
+      </span>
+    {{/if}}
+  </div>
+</div>
+<div class="b-product__control">
+  {{#if inOrder}}
+    {{b-product-quantity quantity=productQuantity
+                         canAdd=canAdd add=(action 'add')
+                         canRemove=canRemove remove=(action 'remove')}}
+  {{else}}
+    {{#if canAdd}}
+      <button class="button button_submit" {{action 'add'}}>Добавить</button>
+    {{else}}
+      <button class="button button_submit button_disabled">Добавить</button>
+    {{/if}}
+  {{/if}}
+</div>

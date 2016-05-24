@@ -1,0 +1,44 @@
+<h2 class="f-default__title f-product__title">Добавить к заказу</h2>
+
+<div class="b-order">
+  {{b-order-description order=order}}
+</div>
+
+{{#if order.active}}
+  <h3 class="f-product__subtle">
+    Выберите любые понравившиеся блюда, чтобы добавить их к заказу
+  </h3>
+
+  {{input class="f-default__field f-product__field" type="text" value=filter
+          placeholder="Поиск, например «пицца»" autofocus=true}}
+
+  {{#if anythingSelected}}
+    <div class="f-product__summary">итого
+      <span class="f-product__cost">{{format-currency totalCost}}</span>
+    </div>
+  {{/if}}
+
+  <ul class="b-list b-product-list">
+    {{#each filteredProducts as |product|}}
+      <li class="b-list__item">
+        {{b-product order=order
+                    product=product
+                    portions=order.portions
+                    add=(action 'addToOrder' order product)
+                    remove=(action 'removeFromOrder' order product)}}
+      </li>
+    {{/each}}
+  </ul>
+
+  {{#unless filteredProducts}}
+    <h3 class="f-product__subtle">
+      Очень жаль, но по данным критериям ничего не найдено :(
+    </h3>
+  {{/unless}}
+
+{{else}}
+  <h3 class="f-product__subtle">
+    Очень жаль, но автор запретил добавление новых заявок к этому заказу и
+    заблокировал его.
+  </h3>
+{{/if}}
