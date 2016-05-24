@@ -1,11 +1,17 @@
-<div class="b-order">
-  <h1 class="b-order__title">Оформление заказа</h1>
+<form class="f-default f-checkout">
+  <div class="b-order">
+    <h1 class="b-order__title">Оформление заказа</h1>
 
-  {{b-order-description order=model.order}}
+    {{b-order-description order=model.order}}
 
-  <ul class="b-list b-product-list">
-    {{#each orderProducts as |product|}}
-      {{b-product-group-by-person product=product portions=order.portions}}
-    {{/each}}
-  </ul>
-</div>
+    <ul class="b-list b-product-list">
+      {{#each orderProducts as |product|}}
+        {{b-product-group-by-person product=product portions=order.portions}}
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="f-checkout__summary"> итого
+    <span class="f-checkout__cost">{{format-currency totalCost}}</span>
+  </div>
+</form>
