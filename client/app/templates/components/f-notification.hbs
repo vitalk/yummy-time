@@ -1,0 +1,17 @@
+<h2 class="f-default__title f-notification__title">Отправить уведомление</h2>
+
+<div class="b-order">
+  {{b-order-description order=order}}
+</div>
+
+<div class="f-default__wrapper">
+  {{b-textarea model=this valuePath='message' rows='4' placeholder='Введите сообщение'}}
+</div>
+
+{{#if showNote}}
+  <div class="f-default__note">{{note}}</div>
+{{/if}}
+
+<button {{action 'submit'}} type="submit" class="button button_submit">
+  Отправить
+</button>

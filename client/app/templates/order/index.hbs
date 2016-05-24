@@ -15,7 +15,7 @@
     <button {{action "toggleActiveState"}} class="button button_submit">
       {{#if order.active}}Заблокировать<br>заказ{{else}}Разблокировать<br>заказ{{/if}}
     </button>
-    {{#link-to 'checkout' order.id class="button button_submit"}}
+    {{#link-to 'order.notify' order.id class="button button_submit"}}
       Уведомить пользователей
     {{/link-to}}
   </div>

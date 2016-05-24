@@ -14,6 +14,7 @@ Router.map(function() {
   });
   this.route('order', { path: '/orders/:order_id' }, function() {
     this.route('index', { path: '/' });
+    this.route('notify');
     this.route('participants');
     this.route('products');
   });
@@ -22,7 +23,6 @@ Router.map(function() {
   this.route('login');
   this.route('vendors', { path: '/vendors' });
   this.route('new-vendor', { path: '/vendors/new' });
-  this.route('checkout', { path: '/orders/:order_id/checkout' });
   // eslint-disable-next-line prefer-arrow-callback
   this.route('account', function() {});
 });
