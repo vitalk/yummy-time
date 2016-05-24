@@ -7,10 +7,11 @@ export default Ember.Component.extend({
   wrapped: true,
 
   products: Ember.computed('portions.[]', 'portions.@each.deleted', function() {
+    // eslint-disable-next-line arrow-body-style
     return this.get('portions').filter((portion) => {
       return (portion.get('product.id') === this.get('product.id') &&
               portion.get('owner.id') === this.get('person.id'));
-    })
+    });
   }),
   productQuantity: Ember.computed('products.[]', function() {
     return this.get('products').length;
