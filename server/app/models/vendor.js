@@ -3,10 +3,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const affiliateSchema = new Schema({
+  address: { type: String, required: true },
+  phones: [{ type: String, required: true }]
+});
+
 const vendorSchema = new Schema({
   title: { type: String, required: true },
   url: { type: String, required: true },
   'min-order-cost': { type: Number },
+  affiliates: [affiliateSchema],
   products: [{ ref: 'Product', type: Schema.ObjectId }]
 });
 

@@ -1,0 +1,52 @@
+<form class="f-default f-checkout">
+  <div class="b-order">
+    <h1 class="b-order__title">Оформление заказа</h1>
+
+    {{b-order-description order=model.order}}
+
+    <ul class="b-list b-product-list">
+      {{#each orderProducts as |product|}}
+        {{b-product-group-by-person product=product portions=order.portions}}
+      {{/each}}
+    </ul>
+  </div>
+
+  {{#if isReady}}
+    <div class="f-checkout__summary"> итого
+      <span class="f-checkout__cost">{{format-currency totalCost}}</span>
+    </div>
+
+    <div class="f-checkout__finalize">
+      <h2 class="f-checkout__subtle">
+        Этот <strong>заказ не&nbsp;может быть сформирован автоматически</strong>,
+        поэтому свяжитесь с поставщиком напрямую
+      </h2>
+
+      <ul class="b-list">
+        {{#each order.vendor.affiliates as |affiliate|}}
+          <li class="b-list__item">
+            <div class="b-affiliate">
+              <div class="b-affiliate__address">{{affiliate.address}}</div>
+              <ul class="b-list b-list_condensed b-affiliate__phones">
+                {{#each affiliate.phones as |phone|}}
+                  <li class="b-list__item">
+                    <span class="b-affiliate__phone">{{phone}}</span>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+
+  {{else}}
+    <div class="f-checkout__finalize">
+      <h2 class="f-checkout__subtle">
+        Этот <strong>заказ не&nbsp;может быть сформирован</strong>, т.к.
+        не&nbsp;собрана минимальная необходимая сумма для его
+        оформления&nbsp;&mdash; {{format-currency order.money.required}}.
+      </h2>
+    </div>
+  {{/if}}
+</form>
