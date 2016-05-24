@@ -15,9 +15,9 @@ test('should render product', function(assert) {
   this.set('product', productStub);
   this.render(hbs`{{b-product product=product}}`);
 
-  assert.equal(this.$('.b-product__name').text(), 'product name');
-  assert.equal(this.$('.b-product__text').text(), 'product text');
-  assert.equal(this.$('.b-product__cost').text(), '42');
+  assert.equal(this.$('.b-product__name').text().trim(), 'product name');
+  assert.equal(this.$('.b-product__text').text().trim(), 'product text');
+  assert.equal(this.$('.b-product__cost').text().trim(), '42');
 });
 
 test('should prettify product cost', function(assert) {
@@ -25,5 +25,5 @@ test('should prettify product cost', function(assert) {
   this.set('product.cost', 42000);
   this.render(hbs`{{b-product product=product}}`);
 
-  assert.equal(this.$('.b-product__cost').text(), '42 000');
+  assert.equal(this.$('.b-product__cost').text().trim(), '42 000');
 })
