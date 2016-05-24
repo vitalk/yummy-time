@@ -41,12 +41,14 @@
     </div>
 
   {{else}}
-    <div class="f-checkout__finalize">
-      <h2 class="f-checkout__subtle">
+    <div class="b-blank">
+      <span class="b-blank__icon">{{i-noodles}}</span>
+      <h2 class="b-blank__title">Заказ ещё не готов</h2>
+      <p class="b-blank__text">
         Этот <strong>заказ не&nbsp;может быть сформирован</strong>, т.к.
         не&nbsp;собрана минимальная необходимая сумма для его
         оформления&nbsp;&mdash; {{format-currency order.money.required}}.
-      </h2>
+      </p>
     </div>
   {{/if}}
 </form>
