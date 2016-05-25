@@ -1,24 +1,29 @@
 {{#b-order order=order portions=portions tabs=tabs}}
-  <ul class="b-list b-order__content">
-    {{#each groups as |group|}}
-      <li class="b-list__item">
-        {{b-product order=order
-                    product=group.grouper
-                    portions=order.portions
-                    add=(action 'addToOrder' order group.grouper)
-                    remove=(action 'removeFromOrder' order group.grouper)}}
-      </li>
-    {{/each}}
-  </ul>
+  {{#unless foundNothing}}
+    <ul class="b-list b-order__content">
+      {{#each groups as |group|}}
+        <li class="b-list__item">
+          {{b-product order=order
+                      product=group.grouper
+                      portions=order.portions
+                      add=(action 'addToOrder' order group.grouper)
+                      remove=(action 'removeFromOrder' order group.grouper)}}
+        </li>
+      {{/each}}
+    </ul>
 
-  <div class="b-order__actions">
-    {{#link-to 'order.checkout' order.id class="button button_submit"}}
-      Приступить к оформлению заказа
-    {{/link-to}}
-    {{#link-to 'order.notify' order.id class="button button_submit"}}
-      Уведомить пользователей
-    {{/link-to}}
-  </div>
+    <div class="b-order__actions">
+      {{#link-to 'order.checkout' order.id class="button button_submit"}}
+        Приступить к оформлению заказа
+      {{/link-to}}
+      {{#link-to 'order.notify' order.id class="button button_submit"}}
+        Уведомить пользователей
+      {{/link-to}}
+    </div>
+
+  {{else}}
+    {{b-blank-order}}
+  {{/unless}}
 
   {{#link-to 'order.products' order.id class="i-button-create"}}{{/link-to}}
 {{/b-order}}

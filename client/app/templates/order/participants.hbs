@@ -1,18 +1,23 @@
 {{#b-order order=order portions=portions tabs=tabs}}
-  <ul class="b-list b-order__content">
-    {{#each groupedPortions as |group|}}
-      {{b-order-group order=order portions=group.list owner=group.grouper}}
-    {{/each}}
-  </ul>
+  {{#unless foundNothing}}
+    <ul class="b-list b-order__content">
+      {{#each groupedPortions as |group|}}
+        {{b-order-group order=order portions=group.list owner=group.grouper}}
+      {{/each}}
+    </ul>
 
-  <div class="b-order__actions">
-    <button {{action "toggleActiveState"}} class="button button_submit">
-      {{#if order.active}}Заблокировать<br>заказ{{else}}Разблокировать<br>заказ{{/if}}
-    </button>
-    {{#link-to 'order.notify' order.id class="button button_submit"}}
-      Уведомить пользователей
-    {{/link-to}}
-  </div>
+    <div class="b-order__actions">
+      <button {{action "toggleActiveState"}} class="button button_submit">
+        {{#if order.active}}Заблокировать<br>заказ{{else}}Разблокировать<br>заказ{{/if}}
+      </button>
+      {{#link-to 'order.notify' order.id class="button button_submit"}}
+        Уведомить пользователей
+      {{/link-to}}
+    </div>
+
+  {{else}}
+    {{b-blank-order}}
+  {{/unless}}
 
   {{#link-to 'order.products' order.id class="i-button-create"}}{{/link-to}}
 {{/b-order}}

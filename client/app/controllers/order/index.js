@@ -75,5 +75,7 @@ export default Ember.Controller.extend(NavigationTabsMixin, ProductActionsMixin,
     return groupBy(this.get('order.portions'), 'product.id');
   }),
   groupsSorting: ['grouper.id'],
-  groups: Ember.computed.sort('groupedPortions', 'groupsSorting')
+  groups: Ember.computed.sort('groupedPortions', 'groupsSorting'),
+
+  foundNothing: Ember.computed.empty('groups')
 });

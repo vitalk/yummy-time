@@ -6,5 +6,7 @@ export default Ember.Controller.extend(NavigationTabsMixin, ProductActionsMixin,
   portions: Ember.computed.filterBy('order.portions', 'deleted', false),
   groupedPortions: Ember.computed('portions.[]', function() {
     return groupBy(this.get('portions'), 'owner.id');
-  })
+  }),
+
+  foundNothing: Ember.computed.empty('groupedPortions')
 });
