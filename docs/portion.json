@@ -15,6 +15,10 @@
       "owner": {
         "data": {"type": "account", "id": 1}
       },
+
+      "product": {
+        "data": {"type": "product", "id": 1}
+      }
     }
   }
 }

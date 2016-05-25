@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "type": "vendor",
+      "attributes": {
+        "title": "Пицца Темпо",
+        "url": "http://www.pizzatempo.by/",
+        "min-order-cost": 120000,
+        "affiliates": [
+          {
+            "address": "220013, Минск, улица Якуба Коласа, 37, офис 13",
+            "phones": [
+              "+375 17 292-11-11",
+              "+375 29 192-11-11",
+              "+375 29 862-11-11",
+              "+375 25 792-11-11"
+            ]
+          }
+        ]
+      },
+
+      "relationships": {
+        "products": {
+          "data": [
+            {"id": 1, "type": "product"},
+            {"id": 2, "type": "product"},
+            {"id": 3, "type": "product"},
+            {"id": 4, "type": "product"},
+            {"id": 5, "type": "product"},
+          ]
+        }
+      }
+    }
+  ]
+}
