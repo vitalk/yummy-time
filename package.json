@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "cd client && npm run build && cd ..",
-    "build-prod": "cd client && npm run build -- --environment production && cd ..",
+    "build:prod": "cd client && npm run build -- --environment production && cd ..",
     "client": "cd client && npm start",
     "server": "cd server && npm start",
     "deploy": "./devops/deploy-server.sh && ./devops/deploy-client.sh",
-    "deploy-client": "./devops/deploy-client.sh",
-    "deploy-server": "./devops/deploy-server.sh",
+    "deploy:client": "./devops/deploy-client.sh",
+    "deploy:server": "./devops/deploy-server.sh",
     "eslint": "./node_modules/.bin/eslint . || true",
     "postinstall": "cd client && npm i && cd ../server && npm i && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"

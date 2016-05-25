@@ -5,11 +5,16 @@
       "location": "Место доставки заказа",
       "time": "15:00",
       "active": true,
+      "money": {
+        "available": 100000,
+        "total": 100001,
+        "required": 120000
+      }
     },
 
     "relationships": {
-      "food-vendor": {
-        "data": {"type": "food-vendor", "id": 1}
+      "vendor": {
+        "data": {"type": "vendor", "id": 1}
       },
 
       "manager": {

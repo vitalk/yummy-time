@@ -1,0 +1,17 @@
+{
+  "data": {
+    "type": "product",
+    "attributes": {
+      "name": "Пицца 4 сыра с рукколой",
+      "text": "Дополнительное описание",
+      "image-url": "http://example.com/image.img",
+      "cost": 123000
+    },
+
+    "relationships": {
+      "vendor": {
+        "data": {"type": "vendor", "id": 42}
+      }
+    }
+  }
+}
