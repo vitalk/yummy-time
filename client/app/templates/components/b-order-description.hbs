@@ -10,10 +10,9 @@
 </div>
 
 <div class="b-order__row">
-  <div class="b-order__manager b-person">
-    <div class="b-person__name">
-      {{order.manager.displayName}}/{{order.location}}
-    </div>
+  <div class="b-person b-order__manager">
+    <span class="b-person__name">{{order.manager.displayName}}</span>
+    <span class="b-order__location">{{order.location}}</span>
   </div>
   <div class="b-order__money b-order-money">
     <span class="b-order-money__available">{{format-currency order.money.available}}</span>
