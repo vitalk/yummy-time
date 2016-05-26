@@ -19,6 +19,18 @@ function createAccessToken(account) {
   };
 }
 
+function getPrimaryEmail(profile) {
+  let primaryEmail;
+
+  profile.emails.forEach((email) => {
+    if (email.type === 'account') {
+      primaryEmail = email.value;
+    }
+  });
+
+  return primaryEmail;
+}
+
 function loadOrCreateAccount(token, refreshToken, profile, done) {
   const options = {
     criteria: { 'google.id': profile.id }
@@ -31,6 +43,7 @@ function loadOrCreateAccount(token, refreshToken, profile, done) {
       // eslint-disable-next-line no-param-reassign
       account = new Account({
         name: profile.displayName,
+        email: getPrimaryEmail(profile),
         provider: 'google',
         google: {
           token,
