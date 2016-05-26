@@ -18,7 +18,7 @@ function connect(options) {
   return mongoose.connect(config.db, options).connection;
 }
 
-function listen() {
+function listen () {
   server.listen(config.port);
 
   // eslint-disable-next-line no-console
