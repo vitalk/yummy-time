@@ -1,7 +1,17 @@
 {{b-tabs tabs=tabs}}
 
-<ul class="b-list b-product-list">
-  {{#each myProducts as |product|}}
-    {{b-product-group-by-order product=product portions=myPortions}}
-  {{/each}}
-</ul>
+<div class="b-product-list">
+  <div class="b-product-list__summary"> итого
+    <span class="b-product-list__cost">{{format-currency totalCost}}</span>
+  </div>
+
+  <ul class="b-list">
+    {{#each myProducts as |product|}}
+      {{b-product-group-by-order product=product portions=myPortions}}
+    {{/each}}
+  </ul>
+
+  <div class="b-product-list__summary b-product-list__summary_bottom"> итого
+    <span class="b-product-list__cost">{{format-currency totalCost}}</span>
+  </div>
+</div>
