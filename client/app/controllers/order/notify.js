@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
   actions: {
     send(message, order) {
       this.get('notifications').sendOrderNotification(message, order.id);
+      this.transitionToRoute('order.index', order.id);
     }
   }
 });
