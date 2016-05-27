@@ -1,0 +1,13 @@
+<div class="b-order b-product-group__body">
+  {{#link-to 'order.index' order.id class="b-order__link"}}
+    <span class="b-order__place">{{order.vendor.title}}</span>
+    <time class="b-order__time">{{order.time}}</time>
+  {{/link-to}}
+  {{b-product-group-cost product=product products=orderProducts}}
+</div>
+
+<div class="b-product-group__control">
+  {{b-product-quantity quantity=productQuantity
+                       canAdd=canAdd add=(action 'addToOrder' order product)
+                       canRemove=canRemove remove=(action 'removeFromOrder' order product)}}
+</div>

@@ -1,0 +1,26 @@
+{{b-tabs tabs=tabs}}
+
+{{#unless foundNothing}}
+  <div class="b-product-list">
+    {{#unless foundAlmostNothing}}
+      <div class="b-product-list__summary"> итого
+        <span class="b-product-list__cost">{{format-currency totalCost}}</span>
+      </div>
+    {{/unless}}
+
+    <ul class="b-list">
+      {{#each myProducts as |product|}}
+        {{b-product-group-by-order product=product portions=myPortions}}
+      {{/each}}
+    </ul>
+
+    <div class="b-product-list__summary b-product-list__summary_bottom"> итого
+      <span class="b-product-list__cost">{{format-currency totalCost}}</span>
+    </div>
+  </div>
+
+{{else}}
+  {{b-blank-account-products}}
+
+  {{#link-to "new-order" class="i-button-create"}}{{/link-to}}
+{{/unless}}

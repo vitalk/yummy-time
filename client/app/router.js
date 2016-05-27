@@ -27,6 +27,7 @@ Router.map(function() {
   // eslint-disable-next-line prefer-arrow-callback
   this.route('account', function() {
     this.route('orders');
+    this.route('products');
   });
 });
 

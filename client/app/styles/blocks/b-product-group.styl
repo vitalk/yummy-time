@@ -11,4 +11,21 @@
     list-style disc inside
 
   &__item
-    margin-bottom 5px
+    display flex
+    justify-content space-between
+    align-items center
+
+    &:before
+      content '-'
+      margin-right .5em
+      color $gr3
+
+    &_alone
+      justify-content flex-start
+
+  &__body
+    margin-left 0
+    color inherit
+
+  &__control
+    margin-right 0
