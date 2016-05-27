@@ -1,9 +1,9 @@
 'use strict';
 
 const nodemailer = require('nodemailer');
+
 const Order = require('../models/order');
 const config = require('../../config/config');
-
 
 function sendEmail(email, message) {
   const transporter = nodemailer.createTransport(config.smtp);
@@ -11,28 +11,24 @@ function sendEmail(email, message) {
   const mailOptions = {
     from: config.systemEmail,
     to: email,
-    subject: 'Notification',
+    subject: 'Новое сообщение',
     text: message
   };
 
   transporter.verify(error => {
     if (error) {
-      // eslint-disable-next-line no-console
-      console.log(error);
+      console.log(error); // eslint-disable-line no-console
     } else {
-      transporter.sendMail(mailOptions, (sendError, info) => {
+      transporter.sendMail(mailOptions, (err, info) => {
         if (error) {
-          // eslint-disable-next-line no-console
-          console.log(sendError);
+          console.log(err); // eslint-disable-line no-console
         } else {
-          // eslint-disable-next-line no-console
-          console.log(`Message sent: ${info.response}`);
+          console.log(`Message sent: ${info.response}`); // eslint-disable-line no-console
         }
       });
     }
   });
 }
-
 
 exports.connection = function(io) {
   io.sockets.on('connection', socket => {
@@ -44,12 +40,13 @@ exports.connection = function(io) {
       socket.leave(data.room);
     });
 
-    socket.on('sendMessage', data => {
+    socket.on('send message', data => {
       socket.broadcast.to(data.order).emit('message', { msg: data.message });
 
-      const emails = [];
+      const recipients = [];
       Order
-        .findById(data.order)
+        .findById(data.orderId)
+        .populate('manager')
         .populate({
           path: 'portions',
           model: 'Portion',
@@ -60,25 +57,20 @@ exports.connection = function(io) {
         })
         .exec((err, order) => {
           order.portions.forEach(item => {
-            let isInList = false;
-            emails.forEach(email => {
-              if (email === item.owner.email) {
-                isInList = true;
-              }
-            });
-            if (!isInList) {
-              emails.push(item.owner.email);
+            const recipient = item.owner.email;
+            if (order.manager.email !== recipient &&
+                recipients.indexOf(recipient) === -1) {
+              recipients.push(recipient);
             }
           });
 
-          emails.forEach(email => {
-            sendEmail(email, data.message);
+          recipients.forEach(recipient => {
+            sendEmail(recipients, data.message);
           });
         });
     });
 
-
-    socket.on('getOrders', data => {
+    socket.on('get orders', data => {
       const orders = [];
       Order
         .find()
