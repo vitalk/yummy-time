@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export const OrdersController = Ember.Mixin.create({
+export const OrdersMixin = Ember.Mixin.create({
   tabs: new Ember.A([
     Ember.Object.create({ endpoint: 'orders.index', title: 'Все' }),
     Ember.Object.create({ endpoint: 'orders.active', title: 'Активные' }),
@@ -15,4 +15,4 @@ export const SortableMixin = Ember.Mixin.create({
   orders: Ember.computed.sort('model', 'ordersSorting')
 });
 
-export default Ember.Controller.extend(OrdersController, SortableMixin, {});
+export default Ember.Controller.extend(OrdersMixin, SortableMixin, {});
