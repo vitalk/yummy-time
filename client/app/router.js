@@ -22,8 +22,6 @@ Router.map(function() {
   this.route('new-order', { path: '/orders/new' });
   this.route('register');
   this.route('login');
-  this.route('vendors', { path: '/vendors' });
-  this.route('new-vendor', { path: '/vendors/new' });
   // eslint-disable-next-line prefer-arrow-callback
   this.route('account', function() {
     this.route('orders');
