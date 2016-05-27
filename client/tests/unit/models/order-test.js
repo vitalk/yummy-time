@@ -10,6 +10,12 @@ test('should set total and available money on init', function(assert) {
   assert.equal(order.get('money.available'), 0);
 });
 
+test('should set timestamps on init', function(assert) {
+  let order = this.subject();
+  assert.ok(order.get('createdAt'));
+  assert.ok(order.get('updatedAt'));
+});
+
 test('is not ready when the total money less then required', function(assert) {
   let order = this.subject({ money: { total: 0, required: 42 } });
   assert.equal(order.get('isReady'), false);
