@@ -67,31 +67,31 @@ export default Ember.Service.extend({
   },
 
   requestUserOrders(email) {
-    const socketIO = this.getSocket();
-    socketIO.emit('getOrders', { email });
+    const socket = this.getSocket();
+    socket.emit('getOrders', { email });
   },
 
   joinToPrivateSession(email) {
-    const socketIO = this.getSocket();
-    socketIO.emit('join', { room: email });
+    const socket = this.getSocket();
+    socket.emit('join', { room: email });
   },
 
   sendOrderNotification(message, order) {
-    const socketIO = this.getSocket();
-    socketIO.emit('sendMessage', { message, order });
+    const socket = this.getSocket();
+    socket.emit('sendMessage', { message, order });
   },
 
   subscribeOrderNotification(orderId) {
     this.setNotificationCookie(orderId);
-    const socketIO = this.getSocket();
-    socketIO.emit('join', { room: orderId });
+    const socket = this.getSocket();
+    socket.emit('join', { room: orderId });
   },
 
   subscribeNotifications() {
-    const notification = this;
-    const orders = notification.getOrdersFromCookies();
+    const orders = this.getOrdersFromCookies();
+    const this_ = this;
     orders.forEach(item => {
-      notification.subscribeOrderNotification(item);
+      this_.subscribeOrderNotification(item);
     });
   },
 
@@ -101,12 +101,12 @@ export default Ember.Service.extend({
   },
 
   unsubscribeFromOrderNotifications() {
-    const socketIO = this.getSocket();
-    const notification = this;
-    const orders = notification.getOrdersFromCookies();
+    const socket = this.getSocket();
+    const this_ = this;
+    const orders = this.getOrdersFromCookies();
     orders.forEach(item => {
-      socketIO.emit('leave', { room: item });
-      notification.removeNotificationCookie(item);
+      socket.emit('leave', { room: item });
+      this_.removeNotificationCookie(item);
     });
   },
 
@@ -120,10 +120,9 @@ export default Ember.Service.extend({
 
   init(email) {
     this._super.apply(this);
-    const socketIO = this.getSocket();
+    const socket = this.getSocket();
 
-
-    socketIO.on('message', data => {
+    socket.on('message', data => {
       const options = {
         body: data.msg,
         icon: 'assets/img/notify-icon.jpg'
@@ -142,13 +141,12 @@ export default Ember.Service.extend({
       }
     }, this);
 
-
-    socketIO.on('orders', function(data) {
-      const notification = this;
+    socket.on('orders', function(data) {
+      const this_ = this;
       data.orders.forEach(orderId => {
-        notification.subscribeOrderNotification(orderId);
+        this_.subscribeOrderNotification(orderId);
       });
-      socketIO.emit('leave', { room: email });
+      socket.emit('leave', { room: email });
     }, this);
   }
 });

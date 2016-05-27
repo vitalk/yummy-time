@@ -1,9 +1,9 @@
 'use strict';
 
 const nodemailer = require('nodemailer');
+
 const Order = require('../models/order');
 const config = require('../../config/config');
-
 
 function sendEmail(email, message) {
   const transporter = nodemailer.createTransport(config.smtp);
@@ -17,22 +17,18 @@ function sendEmail(email, message) {
 
   transporter.verify(error => {
     if (error) {
-      // eslint-disable-next-line no-console
-      console.log(error);
+      console.log(error); // eslint-disable-line no-console
     } else {
-      transporter.sendMail(mailOptions, (sendError, info) => {
+      transporter.sendMail(mailOptions, (err, info) => {
         if (error) {
-          // eslint-disable-next-line no-console
-          console.log(sendError);
+          console.log(err); // eslint-disable-line no-console
         } else {
-          // eslint-disable-next-line no-console
-          console.log(`Message sent: ${info.response}`);
+          console.log(`Message sent: ${info.response}`); // eslint-disable-line no-console
         }
       });
     }
   });
 }
-
 
 exports.connection = function(io) {
   io.sockets.on('connection', socket => {
@@ -76,7 +72,6 @@ exports.connection = function(io) {
           });
         });
     });
-
 
     socket.on('getOrders', data => {
       const orders = [];

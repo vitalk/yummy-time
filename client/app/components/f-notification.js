@@ -45,7 +45,7 @@ export default Ember.Component.extend(Validations, {
       this.validate().then(({ validations }) => {
         if (validations.get('isValid')) {
           this.attrs.submit(
-            this.getProperties('message'),
+            this.get('message'),
             this.get('order')
           );
         }
