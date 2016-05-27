@@ -43,9 +43,10 @@ exports.connection = function(io) {
     socket.on('sendMessage', data => {
       socket.broadcast.to(data.order).emit('message', { msg: data.message });
 
-      const emails = [];
+      const recipients = [];
       Order
         .findById(data.order)
+        .populate('manager')
         .populate({
           path: 'portions',
           model: 'Portion',
@@ -56,19 +57,15 @@ exports.connection = function(io) {
         })
         .exec((err, order) => {
           order.portions.forEach(item => {
-            let isInList = false;
-            emails.forEach(email => {
-              if (email === item.owner.email) {
-                isInList = true;
-              }
-            });
-            if (!isInList) {
-              emails.push(item.owner.email);
+            const recipient = item.owner.email;
+            if (order.manager.email !== recipient &&
+                recipients.indexOf(recipient) === -1) {
+              recipients.push(recipient);
             }
           });
 
-          emails.forEach(email => {
-            sendEmail(email, data.message);
+          recipients.forEach(recipient => {
+            sendEmail(recipients, data.message);
           });
         });
     });
