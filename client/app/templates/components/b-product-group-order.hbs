@@ -1,6 +1,8 @@
 <div class="b-order b-product-group__body">
-  <span class="b-order__place">{{order.vendor.title}}</span>
-  <time class="b-order__time">{{order.time}}</time>
+  {{#link-to 'order.index' order.id class="b-order__link"}}
+    <span class="b-order__place">{{order.vendor.title}}</span>
+    <time class="b-order__time">{{order.time}}</time>
+  {{/link-to}}
   {{b-product-group-cost product=product products=orderProducts}}
 </div>
 
