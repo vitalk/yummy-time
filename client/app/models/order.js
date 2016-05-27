@@ -9,6 +9,8 @@ export default DS.Model.extend({
   money: DS.attr({ defaultValue: () => ({ total: 0, available: 0 }) }),
   portions: DS.hasMany('portion'),
   active: DS.attr('boolean', { defaultValue: true }),
+  createdAt: DS.attr('date', { defaultValue() { return new Date(); } }),
+  updatedAt: DS.attr('date', { defaultValue() { return new Date(); } }),
 
   isReady: Ember.computed('money.total', 'money.required', function() {
     return this.get('money.total') >= this.get('money.required');

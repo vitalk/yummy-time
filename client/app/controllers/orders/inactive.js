@@ -1,4 +1,4 @@
 import Ember from 'ember';
-import { OrdersController } from './index';
+import { OrdersMixin, SortableMixin } from './index';
 
-export default Ember.Controller.extend(OrdersController, {});
+export default Ember.Controller.extend(OrdersMixin, SortableMixin, {});
