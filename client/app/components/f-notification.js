@@ -48,6 +48,7 @@ export default Ember.Component.extend(Validations, {
             this.get('message'),
             this.get('order')
           );
+          this.set('message');
         }
         this.set('didValidate', true);
       });
