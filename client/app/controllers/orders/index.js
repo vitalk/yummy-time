@@ -10,4 +10,9 @@ export const OrdersController = Ember.Mixin.create({
   foundNothing: Ember.computed.empty('model')
 });
 
-export default Ember.Controller.extend(OrdersController, {});
+export const SortableMixin = Ember.Mixin.create({
+  ordersSorting: ['createdAt:desc'],
+  orders: Ember.computed.sort('model', 'ordersSorting')
+});
+
+export default Ember.Controller.extend(OrdersController, SortableMixin, {});
