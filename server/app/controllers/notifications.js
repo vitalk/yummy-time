@@ -11,7 +11,7 @@ function sendEmail(email, message) {
   const mailOptions = {
     from: config.systemEmail,
     to: email,
-    subject: 'Notification',
+    subject: 'Новое сообщение',
     text: message
   };
 
