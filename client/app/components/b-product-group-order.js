@@ -12,7 +12,7 @@ export default Ember.Component.extend(ProductActionsMixin, {
   }),
 
   orderPortions: Ember.computed('myPortions.[]', 'myPortions.@each.deleted', function() {
-    return this.get('myPortions').filter((portion) => {
+    return this.get('myPortions').filter((portion) => { // eslint-disable-line arrow-body-style
       return (portion.get('product.id') === this.get('product.id'));
     });
   }),

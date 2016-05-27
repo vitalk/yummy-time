@@ -33,7 +33,7 @@ export const ProductActionsMixin = Ember.Mixin.create({
       }
 
       portion.save().then(() => {
-        portion.get('order').then((order) => {
+        portion.get('order').then((order) => { // eslint-disable-line no-shadow
           order.addPortion(portion);
 
           if (isManager) {
@@ -41,7 +41,7 @@ export const ProductActionsMixin = Ember.Mixin.create({
           }
 
           order.save();
-        })
+        });
       });
     },
 
