@@ -1,7 +1,7 @@
 {{b-tabs tabs=tabs}}
 
 {{#unless foundNothing}}
-  {{#b-order-list orders=model as |order|}}
+  {{#b-order-list orders=orders as |order|}}
     {{pr-order order=order isMine=true}}
   {{/b-order-list}}
 
