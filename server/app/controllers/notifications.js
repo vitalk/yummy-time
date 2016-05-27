@@ -40,12 +40,12 @@ exports.connection = function(io) {
       socket.leave(data.room);
     });
 
-    socket.on('sendMessage', data => {
+    socket.on('send message', data => {
       socket.broadcast.to(data.order).emit('message', { msg: data.message });
 
       const recipients = [];
       Order
-        .findById(data.order)
+        .findById(data.orderId)
         .populate('manager')
         .populate({
           path: 'portions',
@@ -70,7 +70,7 @@ exports.connection = function(io) {
         });
     });
 
-    socket.on('getOrders', data => {
+    socket.on('get orders', data => {
       const orders = [];
       Order
         .find()

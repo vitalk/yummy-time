@@ -68,7 +68,7 @@ export default Ember.Service.extend({
 
   requestUserOrders(email) {
     const socket = this.getSocket();
-    socket.emit('getOrders', { email });
+    socket.emit('get orders', { email });
   },
 
   joinToPrivateSession(email) {
@@ -76,9 +76,9 @@ export default Ember.Service.extend({
     socket.emit('join', { room: email });
   },
 
-  sendOrderNotification(message, order) {
+  sendOrderNotification(message, orderId) {
     const socket = this.getSocket();
-    socket.emit('sendMessage', { message, order });
+    socket.emit('send message', { message, orderId });
   },
 
   subscribeOrderNotification(orderId) {
