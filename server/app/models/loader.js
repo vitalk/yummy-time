@@ -29,6 +29,16 @@ function loaderPlugin(schema) {
       if (!obj) {
         // eslint-disable-next-line no-param-reassign
         obj = new this(options.criteria);
+
+        if (options.attrs) {
+          for (const prop in options.attrs) {
+            if ({}.hasOwnProperty.call(options.attrs, prop)) {
+              // eslint-disable-next-line no-param-reassign
+              obj[prop] = options.attrs[prop];
+            }
+          }
+        }
+
         // eslint-disable-next-line no-shadow
         obj.save((err) => callback(err, obj));
       }

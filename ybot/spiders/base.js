@@ -1,6 +1,7 @@
 'use strict';
 
 const scrapy = require('node-scrapy');
+const config = require('../config.json');
 
 class BaseSpider {
   constructor(name) {
@@ -18,6 +19,15 @@ class BaseSpider {
    */
   get requestDelay() {
     return this._seed * this.delayBetweenRequests;
+  }
+
+  /**
+   * Vendor configuration.
+   *
+   * @return {Object}
+   */
+  get config() {
+    return config[this.name];
   }
 
   /**

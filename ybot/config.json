@@ -1,0 +1,16 @@
+{
+  "eburger": {
+    "title": "eBurger",
+    "url": "http://eburger.by",
+    "min-order-cost": 180000,
+    "affiliates": [
+      {
+        "address": null,
+        "phones": [
+          "+375 29 689-00-99",
+          "+375 29 901-00-99"
+        ]
+      }
+    ]
+  }
+}

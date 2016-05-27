@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const loaderPlugin = require('../../server/app/models/loader');
 
 const affiliateSchema = new Schema({
-  address: { type: String, required: true },
+  address: { type: String },
   phones: [{ type: String, required: true }]
 });
 

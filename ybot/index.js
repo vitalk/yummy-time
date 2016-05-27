@@ -42,7 +42,9 @@ function main() {
 
     const vendor = new Promise((resolve, reject) => {
       const options = {
-        select: 'title products', criteria: { title: spider.name }
+        criteria: { title: spider.config.title },
+        select: 'title products',
+        attrs: spider.config
       };
 
       Vendor.loadOrCreate(options, (err, vendor) => { // eslint-disable-line no-shadow
