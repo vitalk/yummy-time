@@ -15,6 +15,7 @@ function save(res) {
     const vendor = res[0];
     const products = res[1];
 
+    vendor.products = [];
     products.forEach((item) => {
       const product = new Product(item);
       product.vendor = vendor;
