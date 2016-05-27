@@ -2,9 +2,11 @@
 
 {{#unless foundNothing}}
   <div class="b-product-list">
-    <div class="b-product-list__summary"> итого
-      <span class="b-product-list__cost">{{format-currency totalCost}}</span>
-    </div>
+    {{#unless foundAlmostNothing}}
+      <div class="b-product-list__summary"> итого
+        <span class="b-product-list__cost">{{format-currency totalCost}}</span>
+      </div>
+    {{/unless}}
 
     <ul class="b-list">
       {{#each myProducts as |product|}}

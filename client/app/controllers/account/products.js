@@ -21,5 +21,6 @@ export default Ember.Controller.extend(NavigationTabsMixin, ProductActionsMixin,
     }, 0);
   }),
 
-  foundNothing: Ember.computed.empty('myPortions')
+  foundNothing: Ember.computed.empty('myPortions'),
+  foundAlmostNothing: Ember.computed.lt('myProducts.length', 3)
 });
