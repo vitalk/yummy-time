@@ -19,5 +19,7 @@ export default Ember.Controller.extend(NavigationTabsMixin, ProductActionsMixin,
     return this.get('myPortions').reduce((sum, portion) => {
       return sum + portion.get('cost');
     }, 0);
-  })
+  }),
+
+  foundNothing: Ember.computed.empty('myPortions')
 });
