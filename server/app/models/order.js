@@ -10,6 +10,7 @@ const orderSchema = new Schema({
   vendor: { ref: 'Vendor', type: Schema.ObjectId },
   portions: [{ ref: 'Portion', type: Schema.ObjectId }],
   active: { type: Boolean, required: true, default: true },
+  deleted: { type: Boolean, required: true, default: false },
   money: {
     available: { type: Number, default: 0 },
     total: { type: Number, default: 0 },
