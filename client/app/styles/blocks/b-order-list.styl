@@ -1,21 +1,5 @@
 .b-order-list
   margin 0 auto
-  overflow-y auto
-  max-height calc(100vh - 200px)
-
-  @media $min768
-    &::-webkit-scrollbar
-      width 6px
-    &::-webkit-scrollbar-track
-      border-radius 0
-    &::-webkit-scrollbar-thumb
-      border-radius 0
-      background $bg-primary
-    &::-webkit-scrollbar-thumb:window-inactive
-      background $bg-primary
-
-  @media $max767portrait
-    max-height calc(100vh - 185px)
 
   &__item
     box-shadow 1px 1px 5px 0 rgba($bs-dark,.5)
