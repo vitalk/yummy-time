@@ -3,7 +3,19 @@
   display flex
   justify-content center
   height 100vh
+  overflow-y auto
   align-items flex-start
+
+  @media $min768
+    &::-webkit-scrollbar
+      width 6px
+    &::-webkit-scrollbar-track
+      border-radius 0
+    &::-webkit-scrollbar-thumb
+      border-radius 0
+      background $bg-primary
+    &::-webkit-scrollbar-thumb:window-inactive
+      background $bg-primary
 
   @media $max767
     padding-top 60px
