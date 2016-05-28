@@ -1,5 +1,8 @@
 <div class="b-order__row">
-  <div class="b-order__place">{{order.vendor.title}}
+  <div class="b-order__place">
+    {{#link-to 'order.index' order.id class="b-order__link"}}
+      {{order.vendor.title}}
+    {{/link-to}}
     {{#if order.active}}
       {{i-open-lock}}
     {{else}}

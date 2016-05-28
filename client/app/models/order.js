@@ -9,6 +9,7 @@ export default DS.Model.extend({
   money: DS.attr({ defaultValue: () => ({ total: 0, available: 0 }) }),
   portions: DS.hasMany('portion'),
   active: DS.attr('boolean', { defaultValue: true }),
+  deleted: DS.attr('boolean', { defaultValue: false }),
   createdAt: DS.attr('date', { defaultValue() { return new Date(); } }),
   updatedAt: DS.attr('date', { defaultValue() { return new Date(); } }),
 

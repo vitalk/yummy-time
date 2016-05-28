@@ -12,11 +12,15 @@ export default Ember.Component.extend({
     return (currentAccountId !== orderManagerId);
   }),
 
-  canDelete: Ember.computed('session.account.id', 'order.active', function() {
+  canCheck: Ember.computed('isManager', 'order.deleted', function() {
+    return (this.get('order.deleted') || this.get('isManager'));
+  }),
+
+  canDelete: Ember.computed('session.account.id', 'order.{active,deleted}', function() {
     const currentAccountId = this.get('session.account.id');
     const order = this.get('order');
 
-    if (order.get('active')) {
+    if (order.get('active') && !order.get('deleted')) {
       return (currentAccountId === this.get('order.manager.id')) ||
              (currentAccountId === this.get('owner.id'));
     }

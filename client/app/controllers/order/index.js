@@ -73,7 +73,14 @@ export const ProductActionsMixin = Ember.Mixin.create({
   }
 });
 
-export default Ember.Controller.extend(NavigationTabsMixin, ProductActionsMixin, {
+export const OrderActionsMixin = Ember.Mixin.create({
+  canAdd: Ember.computed('order.{active,deleted}', function() {
+    return (this.get('order.active') && !this.get('order.deleted'));
+  })
+});
+
+// eslint-disable-next-line max-len
+export default Ember.Controller.extend(NavigationTabsMixin, ProductActionsMixin, OrderActionsMixin, {
   myProducts: Ember.computed.mapBy('myPortions', 'product'),
   groupedPortions: Ember.computed('order.portions.[]', function() {
     return groupBy(this.get('order.portions'), 'product.id');

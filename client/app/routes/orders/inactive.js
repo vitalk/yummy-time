@@ -4,7 +4,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model() {
     return this.store.query('order', {
-      filter: { simple: { active: false } }
+      filter: { simple: { active: false, deleted: false } }
     });
   },
 

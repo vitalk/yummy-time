@@ -38,9 +38,9 @@
   height 50px
   border-radius 50%
   box-shadow 1px 1px 3px 0 rgba($bs-dark,0.33)
-  position absolute
+  position fixed
   right 15px
-  bottom -60px
+  bottom 15px
   background $bg-action
   display block
   transition opacity .2s ease-out
@@ -78,8 +78,15 @@
     &:after
       height 24px
 
-  @media $max767portrait
-    bottom -55px
+  &_disabled
+    pointer-events none
+    cursor not-allowed
+    background $grD
+
+    &:before
+    &:after
+      background $gr9
+
 
 .i-button-remove
   width 32px
