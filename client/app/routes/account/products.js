@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   session: Ember.inject.service(),
 
-  model(params) {
+  model() {
     return Ember.RSVP.hash({
       portions: this.store.query('portion', {
         filter: { simple: { owner: this.get('session.accountId'), deleted: false } }

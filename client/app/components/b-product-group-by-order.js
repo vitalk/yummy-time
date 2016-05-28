@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   classNames: ['b-list__item', 'b-product-group'],
 
   productPortions: Ember.computed('portions.[]', function() {
-    return this.get('portions').filter((portion) => {
+    return this.get('portions').filter((portion) => { // eslint-disable-line arrow-body-style
       return (!portion.get('deleted') &&
               portion.get('product.id') === this.get('product.id'));
     });

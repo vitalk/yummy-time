@@ -2,6 +2,7 @@
 
 const bcrypt = require('bcrypt-nodejs');
 const mongoose = require('mongoose');
+const loaderPlugin = require('./loader');
 
 const OAuthProviders = [
   'google'
@@ -88,21 +89,6 @@ accountSchema.methods = {
   }
 };
 
-accountSchema.statics = {
-
-  /**
-   * Load instance
-   *
-   * @param {Object} options
-   * @param {Function} callback
-   * @api private
-   */
-  load(options, callback) {
-    const select = options.select || 'name';
-    return this.findOne(options.criteria)
-      .select(select)
-      .exec(callback);
-  }
-};
+accountSchema.plugin(loaderPlugin);
 
 module.exports = mongoose.model('Account', accountSchema);

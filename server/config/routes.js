@@ -21,7 +21,7 @@ module.exports = function applyRoutes(app) {
           passport.authenticate('jwt'), api);
   app.patch('/:type(orders|portions)/:id',
             passport.authenticate('jwt'), api);
-  app.post('/:type(orders|portions|vendors|products)',
+  app.post('/:type(orders|portions|products)',
            passport.authenticate('jwt'), api);
   app.post('/:type(accounts)', api);
   app.patch('/:type(accounts)/:id', passport.authenticate('jwt'), api);

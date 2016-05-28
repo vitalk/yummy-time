@@ -7,6 +7,13 @@ export default Ember.Route.extend({
       portions: this.store.query('portion', {
         filter: { simple: { order: params.order_id, deleted: false } }
       })
+    }).then((result) => { // eslint-disable-line arrow-body-style
+      return this.store.query('vendor', {
+        filter: { simple: { vendor: result.order.vendor.id } }
+      }).then((vendor) => {
+        result.vendor = vendor; // eslint-disable-line no-param-reassign
+        return result;
+      });
     }).then((result) => {
       const ids = result.portions.map((p) => p.get('product.id'));
       return this.store.query('product', {

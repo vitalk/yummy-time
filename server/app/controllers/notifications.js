@@ -65,7 +65,7 @@ exports.connection = function(io) {
           });
 
           recipients.forEach(recipient => {
-            sendEmail(recipients, data.message);
+            sendEmail(recipient, data.message);
           });
         });
     });

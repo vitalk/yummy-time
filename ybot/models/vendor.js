@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const loaderPlugin = require('./loader');
+const loaderPlugin = require('../../server/app/models/loader');
 
 const affiliateSchema = new Schema({
   address: { type: String },
@@ -12,11 +12,13 @@ const affiliateSchema = new Schema({
 const vendorSchema = new Schema({
   title: { type: String, required: true },
   rev: { type: Number, required: true, default: 0 },
-  url: { type: String, required: true },
+  url: { type: String },
   'min-order-cost': { type: Number },
   affiliates: [affiliateSchema],
   products: [{ ref: 'Product', type: Schema.ObjectId }]
 });
+
+vendorSchema.plugin(loaderPlugin);
 
 vendorSchema.path('title').validate(function(title, callback) {
   const Vendor = mongoose.model('Vendor');
@@ -29,7 +31,5 @@ vendorSchema.path('title').validate(function(title, callback) {
     callback(true);
   }
 }, 'Food vendor already exists');
-
-vendorSchema.plugin(loaderPlugin);
 
 module.exports = mongoose.model('Vendor', vendorSchema);
