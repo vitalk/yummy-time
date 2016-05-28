@@ -24,5 +24,14 @@ export default Ember.Controller.extend({
     }, 0);
   }),
 
-  isReady: Ember.computed.bool('order.isReady')
+  isReady: Ember.computed.bool('order.isReady'),
+
+  actions: {
+    removeOrder(order) {
+      order.set('deleted', true);
+      order.save().then(() => {
+        this.transitionToRoute('orders');
+      });
+    }
+  }
 });
