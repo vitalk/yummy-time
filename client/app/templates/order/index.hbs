@@ -12,19 +12,7 @@
       {{/each}}
     </ul>
 
-    <div class="b-order__actions">
-      {{#if canCheckout}}
-        {{#link-to 'order.checkout' order.id class="button button_submit"}}
-          Приступить к оформлению заказа
-        {{/link-to}}
-      {{/if}}
-
-      {{#if canNotify}}
-        {{#link-to 'order.notify' order.id class="button button_submit"}}
-          Уведомить пользователей
-        {{/link-to}}
-      {{/if}}
-    </div>
+    {{b-order-actions order=order}}
 
   {{else}}
     {{b-blank-order}}

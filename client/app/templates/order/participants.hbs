@@ -6,19 +6,7 @@
       {{/each}}
     </ul>
 
-    <div class="b-order__actions">
-      {{#if canCheckout}}
-        <button {{action "toggleActiveState"}} class="button button_submit">
-          {{#if order.active}}Заблокировать<br>заказ{{else}}Разблокировать<br>заказ{{/if}}
-        </button>
-      {{/if}}
-
-      {{#if canNotify}}
-        {{#link-to 'order.notify' order.id class="button button_submit"}}
-          Уведомить пользователей
-        {{/link-to}}
-      {{/if}}
-    </div>
+    {{b-order-actions order=order}}
 
   {{else}}
     {{b-blank-order}}
