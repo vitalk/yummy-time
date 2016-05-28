@@ -19,5 +19,10 @@
     {{b-blank-order}}
   {{/unless}}
 
-  {{#link-to 'order.products' order.id class="i-button-create"}}{{/link-to}}
+  {{#if canAdd}}
+    {{#link-to 'order.products' order.id class="i-button-create"}}{{/link-to}}
+  {{else}}
+    {{#link-to 'order.products' order.id class="i-button-create i-button-create_disabled"}}{{/link-to}}
+  {{/if}}
+
 {{/b-order}}
