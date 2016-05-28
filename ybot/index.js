@@ -15,10 +15,13 @@ function save(res) {
     const vendor = res[0];
     const products = res[1];
 
-    vendor.products = [];
+    vendor.rev += 1;
+    const upcoming = vendor.rev;
+
     products.forEach((item) => {
       const product = new Product(item);
       product.vendor = vendor;
+      product.rev = upcoming;
       product.save((err) => {
         if (err) {
           reject(err);
@@ -44,7 +47,7 @@ function main() {
     const vendor = new Promise((resolve, reject) => {
       const options = {
         criteria: { title: spider.config.title },
-        select: 'title products',
+        select: 'title rev products',
         attrs: spider.config
       };
 
