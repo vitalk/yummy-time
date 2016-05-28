@@ -19,9 +19,11 @@
         {{/link-to}}
       {{/if}}
 
-      {{#link-to 'order.notify' order.id class="button button_submit"}}
-        Уведомить пользователей
-      {{/link-to}}
+      {{#if canNotify}}
+        {{#link-to 'order.notify' order.id class="button button_submit"}}
+          Уведомить пользователей
+        {{/link-to}}
+      {{/if}}
     </div>
 
   {{else}}

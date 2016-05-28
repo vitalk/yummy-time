@@ -83,6 +83,11 @@ export const OrderActionsMixin = Ember.Mixin.create({
   canCheckout: Ember.computed('order.{active,isReady}', 'session.account.id', function() {
     return (this.get('order.manager.id') === this.get('session.account.id') &&
             this.get('order.isReady'));
+  }),
+
+  canNotify: Ember.computed('session.account.id', function() {
+    return (this.get('order.manager.id') === this.get('session.account.id') &&
+            true);
   })
 });
 
