@@ -74,8 +74,8 @@ export const ProductActionsMixin = Ember.Mixin.create({
 });
 
 export const OrderActionsMixin = Ember.Mixin.create({
-  canAdd: Ember.computed('order.active', function() {
-    return this.get('order.active');
+  canAdd: Ember.computed('order.{active,deleted}', function() {
+    return (this.get('order.active') && !this.get('order.deleted'));
   })
 });
 

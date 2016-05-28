@@ -6,13 +6,13 @@ export default Ember.Component.extend({
 
   session: Ember.inject.service(),
 
-  canCheckout: Ember.computed('order.{active,isReady}', 'session.account.id', function() {
+  canCheckout: Ember.computed('order.{active,isReady,deleted}', 'session.account.id', function() {
     return (this.get('order.manager.id') === this.get('session.account.id') &&
-            this.get('order.isReady'));
+            this.get('order.isReady') && !this.get('order.deleted'));
   }),
 
-  canNotify: Ember.computed('session.account.id', function() {
+  canNotify: Ember.computed('order.deleted', 'session.account.id', function() {
     return (this.get('order.manager.id') === this.get('session.account.id') &&
-            true);
+            !this.get('order.deleted'));
   })
 });

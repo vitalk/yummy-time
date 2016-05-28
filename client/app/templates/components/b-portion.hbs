@@ -13,6 +13,6 @@
     {{/if}}
   </div>
   <div class="b-portion__cost">{{format-currency portion.cost}}</div>
-  {{b-checkbox checked=portion.paid disabled=isManager
+  {{b-checkbox checked=portion.paid disabled=canCheck
                onchange=(action 'togglePaid' portion)}}
 </div>

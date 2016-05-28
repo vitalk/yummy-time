@@ -17,13 +17,13 @@
     </div>
 
     {{b-checkbox class="b-order-group__checkbox"
-                 checked=allPaid disabled=isManager
+                 checked=allPaid disabled=canCheck
                  onchange=(action 'toggleAll') }}
   </div>
 </div>
 
 <ul class="b-list b-order-group__summary">
   {{#each portions as |portion|}}
-    {{b-portion portion=portion isManager=isManager canDelete=canDelete}}
+    {{b-portion portion=portion canCheck=canCheck canDelete=canDelete}}
   {{/each}}
 </ul>

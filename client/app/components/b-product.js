@@ -22,11 +22,12 @@ export default Ember.Component.extend({
   }),
   inOrder: Ember.computed.gt('productQuantity', 0),
 
-  canAdd: Ember.computed('order', function() {
-    return this.get('order.active');
+  canAdd: Ember.computed('order.{active,deleted}', function() {
+    return (this.get('order.active') && !this.get('order.deleted'));
   }),
-  canRemove: Ember.computed('order', 'inOrder', function() {
-    return (this.get('inOrder') && this.get('order.active'));
+  canRemove: Ember.computed('order.{active,deleted}', 'inOrder', function() {
+    return (this.get('inOrder') && this.get('order.active') &&
+            !this.get('order.deleted'));
   }),
 
   productTotal: Ember.computed('product.cost', 'productQuantity', function() {
