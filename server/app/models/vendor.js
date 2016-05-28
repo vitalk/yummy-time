@@ -11,6 +11,7 @@ const affiliateSchema = new Schema({
 
 const vendorSchema = new Schema({
   title: { type: String, required: true },
+  rev: { type: Number, required: true, default: 0 },
   url: { type: String, required: true },
   'min-order-cost': { type: Number },
   affiliates: [affiliateSchema],
