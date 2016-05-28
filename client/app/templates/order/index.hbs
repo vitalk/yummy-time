@@ -13,9 +13,12 @@
     </ul>
 
     <div class="b-order__actions">
-      {{#link-to 'order.checkout' order.id class="button button_submit"}}
-        Приступить к оформлению заказа
-      {{/link-to}}
+      {{#if canCheckout}}
+        {{#link-to 'order.checkout' order.id class="button button_submit"}}
+          Приступить к оформлению заказа
+        {{/link-to}}
+      {{/if}}
+
       {{#link-to 'order.notify' order.id class="button button_submit"}}
         Уведомить пользователей
       {{/link-to}}

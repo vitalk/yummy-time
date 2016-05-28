@@ -74,8 +74,15 @@ export const ProductActionsMixin = Ember.Mixin.create({
 });
 
 export const OrderActionsMixin = Ember.Mixin.create({
+  session: Ember.inject.service(),
+
   canAdd: Ember.computed('order.active', function() {
     return this.get('order.active');
+  }),
+
+  canCheckout: Ember.computed('order.{active,isReady}', 'session.account.id', function() {
+    return (this.get('order.manager.id') === this.get('session.account.id') &&
+            this.get('order.isReady'));
   })
 });
 
