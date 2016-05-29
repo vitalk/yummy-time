@@ -7,7 +7,7 @@ import { unique } from './helpers/unique';
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 Ember.computed.unique = function(dependentKey, attribute) {
-  return Ember.computed(dependentKey, function() {
+  return Ember.computed.call(this, dependentKey, function() {
     return unique(Ember.get(this, dependentKey), attribute);
   });
 }

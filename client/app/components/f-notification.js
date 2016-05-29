@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import { OrderParticipantsMixin } from './b-order-actions';
 import { validator, buildValidations } from 'ember-cp-validations';
-import { unique } from '../helpers/unique';
 
 const Validations = buildValidations({
   message: {

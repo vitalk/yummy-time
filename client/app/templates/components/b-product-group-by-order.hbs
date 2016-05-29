@@ -10,7 +10,7 @@
 </div>
 
 <ul class="b-list b-product-group__list">
-  {{#each productOrders as |order|}}
+  {{#each uniqueProductOrders as |order|}}
     {{b-product-group-order order=order product=product portions=portions}}
   {{/each}}
 </ul>

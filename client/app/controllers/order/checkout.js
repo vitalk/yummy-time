@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import { unique } from '../../helpers/unique';
 
 export default Ember.Controller.extend({
   order: Ember.computed.alias('model.order'),
@@ -12,10 +11,8 @@ export default Ember.Controller.extend({
       return (!portion.get('deleted') && portion.get('paid'));
     });
   }),
-  orderProducts: Ember.computed('orderPortions', function() {
-    const res = this.get('orderPortions').map((portion) => portion.get('product'));
-    return unique(res, 'id');
-  }),
+  orderProducts: Ember.computed.mapBy('orderPortions', 'product'),
+  uniqueOrderProducts: Ember.computed.unique('orderProducts', 'id'),
 
   totalCost: Ember.computed('orderPortions', function() {
     // eslint-disable-next-line arrow-body-style

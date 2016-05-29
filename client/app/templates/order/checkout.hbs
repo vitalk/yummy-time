@@ -5,7 +5,7 @@
     {{b-order-description order=model.order}}
 
     <ul class="b-list b-product-list">
-      {{#each orderProducts as |product|}}
+      {{#each uniqueOrderProducts as |product|}}
         {{b-product-group-by-person product=product portions=order.portions}}
       {{/each}}
     </ul>

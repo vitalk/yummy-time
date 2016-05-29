@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import { unique } from '../../helpers/unique';
 import { NavigationTabsMixin } from './index';
 import { ProductActionsMixin } from '../order/index';
 
@@ -10,12 +9,10 @@ export default Ember.Controller.extend(NavigationTabsMixin, ProductActionsMixin,
               !portion.get('deleted'));
     });
   }),
-  products: Ember.computed('myPortions.[]', function() {
-    const res = this.get('myPortions').map((portion) => portion.get('product'));
-    return unique(res, 'id');
-  }),
+  products: Ember.computed.mapBy('myPortions', 'product'),
+  uniqueProducts: Ember.computed.unique('products', 'id'),
   productsSorting: ['id'],
-  myProducts: Ember.computed.sort('products', 'productsSorting'),
+  myProducts: Ember.computed.sort('uniqueProducts', 'productsSorting'),
 
   totalCost: Ember.computed('myPortions.[]', function() {
     return this.get('myPortions').reduce((sum, portion) => { // eslint-disable-line arrow-body-style
