@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { OrderParticipantsMixin } from './b-order-actions';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
@@ -7,23 +8,15 @@ const Validations = buildValidations({
   }
 });
 
-export default Ember.Component.extend(Validations, {
+export default Ember.Component.extend(Validations, OrderParticipantsMixin, {
   tagName: 'form',
   classNames: ['f-default', 'f-notification'],
 
   session: Ember.inject.service(),
   didValidate: false,
 
-  participants: Ember.computed.mapBy('order.portions', 'owner'),
-  recipients: Ember.computed('participants', 'order.manager.id', function() {
-    // eslint-disable-next-line arrow-body-style
-    return this.get('participants').filter((participant) => {
-      return (participant.get('id') !== this.get('order.manager.id'));
-    });
-  }),
   recipientNames: Ember.computed.mapBy('recipients', 'displayName'),
 
-  showNote: Ember.computed.notEmpty('recipients'),
   // eslint-disable-next-line consistent-return
   note: Ember.computed('recipientNames', function() {
     const recipients = this.get('recipientNames').uniq();
