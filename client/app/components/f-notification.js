@@ -16,9 +16,7 @@ export default Ember.Component.extend(Validations, OrderParticipantsMixin, {
   session: Ember.inject.service(),
   didValidate: false,
 
-  uniqueRecipients: Ember.computed('recipients', function() {
-    return unique(this.get('recipients'), 'id');
-  }),
+  uniqueRecipients: Ember.computed.unique('recipients', 'id'),
   recipientNames: Ember.computed.mapBy('uniqueRecipients', 'displayName'),
 
   // eslint-disable-next-line consistent-return
