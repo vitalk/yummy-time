@@ -13,7 +13,7 @@ export default Ember.Component.extend({
     });
   }),
   productPersons: Ember.computed.mapBy('productPortions', 'owner'),
-  uniqueProductPersons: Ember.computed.unique('productPersons', 'id'),
+  uniqueProductPersons: Ember.computed.uniqueBy('productPersons', 'id'),
   productQuantity: Ember.computed('productPortions', function() {
     return this.get('productPortions').length;
   }),

@@ -11,7 +11,7 @@ export default Ember.Component.extend({
     });
   }),
   productOrders: Ember.computed.mapBy('productPortions', 'order'),
-  uniqueProductOrders: Ember.computed.unique('productOrders', 'id'),
+  uniqueProductOrders: Ember.computed.uniqueBy('productOrders', 'id'),
 
   productTotalCost: Ember.computed('productPortions.[]', function() {
     return this.get('productPortions').length * this.get('product.cost');

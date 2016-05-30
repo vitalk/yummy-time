@@ -10,7 +10,7 @@ export default Ember.Controller.extend(NavigationTabsMixin, ProductActionsMixin,
     });
   }),
   products: Ember.computed.mapBy('myPortions', 'product'),
-  uniqueProducts: Ember.computed.unique('products', 'id'),
+  uniqueProducts: Ember.computed.uniqueBy('products', 'id'),
   productsSorting: ['id'],
   myProducts: Ember.computed.sort('uniqueProducts', 'productsSorting'),
 

@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
     });
   }),
   orderProducts: Ember.computed.mapBy('orderPortions', 'product'),
-  uniqueOrderProducts: Ember.computed.unique('orderProducts', 'id'),
+  uniqueOrderProducts: Ember.computed.uniqueBy('orderProducts', 'id'),
 
   totalCost: Ember.computed('orderPortions', function() {
     // eslint-disable-next-line arrow-body-style
