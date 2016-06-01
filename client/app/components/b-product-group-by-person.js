@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import { unique } from '../helpers/unique';
 
 export default Ember.Component.extend({
   tagName: 'li',
@@ -13,10 +12,8 @@ export default Ember.Component.extend({
               portion.get('product.id') === this.get('product.id'));
     });
   }),
-  productPersons: Ember.computed('productPortions', function() {
-    const res = this.get('productPortions').map((portion) => portion.get('owner'));
-    return unique(res, 'id');
-  }),
+  productPersons: Ember.computed.mapBy('productPortions', 'owner'),
+  uniqueProductPersons: Ember.computed.uniqueBy('productPersons', 'id'),
   productQuantity: Ember.computed('productPortions', function() {
     return this.get('productPortions').length;
   }),
