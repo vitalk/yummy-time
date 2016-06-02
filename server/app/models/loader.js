@@ -40,7 +40,7 @@ function loaderPlugin(schema) {
         }
 
         // eslint-disable-next-line no-shadow
-        obj.save((err) => callback(err, obj));
+        return obj.save((err) => callback(err, obj));
       }
 
       return callback(err, obj);
