@@ -6,6 +6,7 @@ const loaderPlugin = require('../../server/app/models/loader');
 
 const productSchema = new Schema({
   name: { type: String, required: true },
+  url: { type: String, required: true },
   rev: { type: Number, required: true, default: 0 },
   text: { type: String },
   cost: { type: Number },
