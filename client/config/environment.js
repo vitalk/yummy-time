@@ -43,17 +43,6 @@ module.exports = function(environment) {
     }
   };
 
-  if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
-
-    // eslint-disable-next-line no-console
-    console.log('dev');
-  }
-
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none';
@@ -70,11 +59,6 @@ module.exports = function(environment) {
     ENV.namespace = '/api/v1';
     ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.namespace}/auth/token`;
     ENV.torii.providers['google-oauth2'].redirectUri = ENV.host;
-
-    // eslint-disable-next-line no-console
-    console.log(`API Namespace: ${ENV.namespace}`);
-    // eslint-disable-next-line no-console
-    console.log('prod');
   }
 
   return ENV;
