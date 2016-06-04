@@ -60,7 +60,8 @@ function main() {
 
     Promise.all([vendor, spider.parse()])
       .then(save)
-      .then(() => connection.close());
+      .then(() => connection.close())
+      .catch((err) => console.log(err)); // eslint-disable-line no-console
   });
 }
 
