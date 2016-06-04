@@ -20,6 +20,24 @@ const util = {
   },
 
   /**
+   * Returns only elements which contains unique attribute from iterable.
+   *
+   * @return {Array}
+   */
+  uniqueBy(iter, attr) {
+    const seen = [];
+    return iter.filter((obj) => {
+      const value = obj[attr];
+      if (seen.indexOf(value) !== -1) {
+        return false;
+      }
+
+      seen.push(value);
+      return true;
+    });
+  },
+
+  /**
    * Normalize URLs, e.g.
    *
    *  - remove duplicates entry
