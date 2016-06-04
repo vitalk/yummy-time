@@ -11,6 +11,11 @@ module.exports = class EburgerSpider extends Spider {
         selector: '[itemtype="http://schema.org/Product"] [itemprop="name"]',
         required: true
       },
+      url: {
+        selector: '[rel="canonical"]',
+        get: 'href',
+        required: true
+      },
       text: {
         selector: '[itemtype="http://schema.org/Product"] [itemprop="description"]'
       },

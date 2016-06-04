@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const spiders = require('./spiders');
+const util = require('./util');
 const config = require('../server/config/config');
 const Product = require('./models/product');
 const Vendor = require('./models/vendor');
@@ -14,14 +15,12 @@ function save(res) {
   return new Promise((resolve, reject) => {
     const vendor = res[0];
     const products = res[1];
-
     vendor.rev += 1;
-    const upcoming = vendor.rev;
 
-    products.forEach((item) => {
+    util.uniqueBy(products, 'url').forEach((item) => {
       const product = new Product(item);
       product.vendor = vendor;
-      product.rev = upcoming;
+      product.rev = vendor.rev;
       product.save((err) => {
         if (err) {
           reject(err);
@@ -61,7 +60,8 @@ function main() {
 
     Promise.all([vendor, spider.parse()])
       .then(save)
-      .then(() => connection.close());
+      .then(() => connection.close())
+      .catch((err) => console.log(err)); // eslint-disable-line no-console
   });
 }
 
