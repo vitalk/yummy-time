@@ -38,13 +38,25 @@ const util = {
   },
 
   /**
+   * Transform passed relative URL into the absolute one.
+   *
+   * @return {String}
+   */
+  normalizeUrl(url, baseUrl) {
+    return (url.startsWith('/') ? `${baseUrl}${url}` : url);
+  },
+
+  /**
    * Normalize URLs, e.g.
    *
    *  - remove duplicates entry
+   *  - transform relative URLs into the absolute ones
    *  - remove any URLs which don’t start with base URL.
    */
   normalizeUrls(baseUrl, urls) {
-    return util.unique(urls.filter((url) => url.startsWith(baseUrl)));
+    return util.unique(urls
+      .map((url) => util.normalizeUrl(url, baseUrl))
+      .filter((url) => url.startsWith(baseUrl)));
   }
 };
 

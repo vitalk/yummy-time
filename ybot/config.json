@@ -12,5 +12,20 @@
         ]
       }
     ]
+  },
+  "city-food": {
+    "title": "City-Food",
+    "url": "http://city-food.by",
+    "min-order-cost": 100000,
+    "affiliates": [
+      {
+        "address": "Минск, улица Пономаренко, 35а",
+        "phones": [
+          "+375 17 256-67-45",
+          "+375 29 352-01-01",
+          "+375 33 352-11-99"
+        ]
+      }
+    ]
   }
 }
