@@ -40,29 +40,38 @@ function save(res) {
 }
 
 function main() {
+  const jobs = [];
+  const connection = connect();
+
   spiders.forEach((spider) => {
-    const connection = connect();
+    const job = new Promise((done) => {
+      const vendor = new Promise((resolve, reject) => {
+        const options = {
+          criteria: { title: spider.config.title },
+          select: 'title rev products',
+          attrs: spider.config
+        };
 
-    const vendor = new Promise((resolve, reject) => {
-      const options = {
-        criteria: { title: spider.config.title },
-        select: 'title rev products',
-        attrs: spider.config
-      };
-
-      Vendor.loadOrCreate(options, (err, vendor) => { // eslint-disable-line no-shadow
-        if (err) {
-          reject(err);
-        }
-        resolve(vendor);
+        Vendor.loadOrCreate(options, (err, vendor) => { // eslint-disable-line no-shadow
+          if (err) {
+            reject(err);
+          }
+          resolve(vendor);
+        });
       });
+
+      Promise.all([vendor, spider.parse()])
+        .then(save)
+        .then(done)
+        .catch((err) => console.log(err)); // eslint-disable-line no-console
     });
 
-    Promise.all([vendor, spider.parse()])
-      .then(save)
-      .then(() => connection.close())
-      .catch((err) => console.log(err)); // eslint-disable-line no-console
+    jobs.push(job);
   });
+
+  Promise.all(jobs)
+    .then(() => connection.close())
+    .catch((err) => console.log(err)); // eslint-disable-line no-console
 }
 
 main();
